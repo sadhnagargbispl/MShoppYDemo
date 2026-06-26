@@ -1,0 +1,545 @@
+﻿@using Microsoft.AspNetCore.Http
+@model VitaFlow.Domain.Entities.M_product
+@{
+    ViewData["Title"] = "Productlist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+
+
+    function QTYChange(sqty, prodid) {
+        var Qty = $("#input_" + prodid).val();
+
+        if (Qty == "") {
+            return false;
+        }
+        if (parseInt(Qty) <= 0) {
+            $("#input_" + prodid).val("1");
+            return false;
+        }
+    }
+
+    function Addtocart(ProdId) {
+        var Qty = $("#input_" + ProdId).val();
+        var availqty = $("#hndAvailstock_" + ProdId).val();
+        if (Qty == "") {
+            toastr.error("Please enter qty", 'Error', {
+                closeButton: true,
+                progressBar: true,
+                positionClass: 'toast-top-right',
+                timeOut: 5000, // 5 seconds
+                extendedTimeOut: 1000 // 1 second longer than timeOut
+            });
+            return false;
+        }
+        if (parseInt(Qty) <= 0) {
+            toastr.error("Quntity greater than 0", 'Error', {
+                closeButton: true,
+                progressBar: true,
+                positionClass: 'toast-top-right',
+                timeOut: 5000, // 5 seconds
+                extendedTimeOut: 1000 // 1 second longer than timeOut
+            });
+            return false;
+        }
+
+        if (parseInt(Qty) > parseInt(availqty)) {
+            var msg = 'Please enter a number less than or equal to ' + availqty;
+            toastr.error(msg, 'Error', {
+                closeButton: true,
+                progressBar: true,
+                positionClass: 'toast-top-right',
+                timeOut: 5000, // 5 seconds
+                extendedTimeOut: 1000 // 1 second longer than timeOut
+            });
+            return false;
+        }
+
+        var ProdName = $("#hndprod_" + ProdId).val();
+        var imagePath = $("#hndimg_" + ProdId).val();
+        $.ajax({
+            type: "POST",
+            url: "/Product/Addtocart",
+            async: true,
+            dataType: "Json",
+            timeout: 900000,
+            beforeSend: function () {
+                $("#btn_" + ProdId).hide();
+                $("#hidbtn_" + ProdId).show();
+            },
+            data: { ProdId: ProdId, ProdName: ProdName, imagePath: imagePath, Qty: Qty },
+            success: function (data) {
+                if (data.msg == "1") {
+                    $("#spncartcount").text(data.total);
+                    var str = ProdName + " added to cart";
+                    toastr.success(str, 'Success', {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: 'toast-top-right',
+                        timeOut: 5000, // 5 seconds
+                        extendedTimeOut: 1000 // 1 second longer than timeOut
+                    });
+                }
+                else {
+                    var str = ProdName + " can not to add in cart";
+                    toastr.error(str, 'Error', {
+                        closeButton: true,
+                        progressBar: true,
+                        positionClass: 'toast-top-right',
+                        timeOut: 5000, // 5 seconds
+                        extendedTimeOut: 1000 // 1 second longer than timeOut
+                    });
+                }
+                $("#btn_" + ProdId).show();
+                $("#hidbtn_" + ProdId).hide();
+            },
+            failure: function (response) {
+                console.log(response.responseText);
+                $("#Submitbtn").prop('disabled', false);
+            },
+            error: function (response) {
+                console.log(response.responseText);
+                $("#Submitbtn").prop('disabled', false);
+            },
+            failure: function (response) {
+                console.log(response.responseText);
+                $("#Submitbtn").prop('disabled', false);
+            }
+        });
+    }
+
+
+
+</script>
+
+<style>
+    .shop-page .shop-filter-toggle {
+        margin-bottom: 14px;
+    }
+
+    .shop-page .btn-filter-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: 10px;
+        border: none;
+        background: linear-gradient(90deg, #2e5fe6 0%, #00b8a9 100%);
+        color: #fff;
+        font-weight: 600;
+        font-size: 13.5px;
+        box-shadow: 0 8px 18px rgba(46, 95, 230, .2);
+    }
+
+    .shop-page .shop-filter-card {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 8px 24px rgba(17, 38, 80, .07);
+        padding: 22px;
+        margin-bottom: 20px;
+        position: sticky;
+        top: 90px;
+    }
+
+    .shop-page .shop-filter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid #eef1f8;
+    }
+
+    .shop-page .shop-filter-header h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #1b2740;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .shop-page .shop-filter-header h6 i {
+        color: #2e5fe6;
+    }
+
+    .shop-page .shop-filter-close {
+        display: none;
+        border: none;
+        background: transparent;
+        font-size: 22px;
+        line-height: 1;
+        color: #8893a8;
+        cursor: pointer;
+    }
+
+    .shop-page .shop-filter-section {
+        margin-bottom: 22px;
+    }
+
+    .shop-page .shop-filter-section:last-of-type {
+        margin-bottom: 18px;
+    }
+
+    .shop-page .shop-filter-title {
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .4px;
+        color: #6b7891;
+        margin-bottom: 12px;
+    }
+
+    .shop-page .shop-filter-check {
+        margin-bottom: 10px;
+    }
+
+    .shop-page .shop-filter-check label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: #4d5875;
+        font-weight: 500;
+        cursor: pointer;
+        margin-bottom: 0;
+    }
+
+    .shop-page .shop-filter-check input {
+        width: 16px;
+        height: 16px;
+        accent-color: #2e5fe6;
+        cursor: pointer;
+    }
+
+    .shop-page .shop-filter-range {
+        width: 100%;
+        accent-color: #2e5fe6;
+    }
+
+    .shop-page .shop-filter-price-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 11.5px;
+        color: #8893a8;
+        margin-top: 6px;
+    }
+
+    .shop-page .btn-apply-filter {
+        display: block;
+        width: 100%;
+        padding: 11px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #2e5fe6 0%, #00b8a9 100%);
+        color: #fff;
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: .3px;
+        box-shadow: 0 8px 18px rgba(46, 95, 230, .2);
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .shop-page .btn-apply-filter:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 10px 22px rgba(0, 184, 169, .3);
+    }
+
+    .shop-page .shop-filter-backdrop {
+        display: none;
+    }
+
+    /* Product card (authored to match live design language) */
+    .shop-page .product-card {
+        background: #fff;
+        border: none;
+        border-radius: 14px;
+        box-shadow: 0 8px 24px rgba(17, 38, 80, .07);
+        overflow: hidden;
+        transition: transform .2s ease, box-shadow .2s ease;
+        height: 100%;
+    }
+
+    .shop-page .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px rgba(17, 38, 80, .12);
+    }
+
+    .shop-page .product-card-media {
+        position: relative;
+        background: #f6f8fc;
+        padding: 10px;
+    }
+
+    .shop-page .product-card-media .productimg {
+        height: 220px;
+        width: 100%;
+        object-fit: contain;
+        background: #fff;
+        border-radius: 10px;
+    }
+
+    .shop-page .product-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        z-index: 2;
+        background: linear-gradient(90deg, #2e5fe6, #00b8a9);
+        color: #fff;
+        font-size: 11.5px;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 20px;
+        box-shadow: 0 6px 14px rgba(46, 95, 230, .28);
+    }
+
+    .shop-page .product-card .card-body {
+        padding: 16px 18px 18px;
+    }
+
+    .shop-page .product-card .title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #1b2740;
+        margin-bottom: 8px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .shop-page .product-card .price {
+        margin-bottom: 6px;
+    }
+
+    .shop-page .product-card .price-current {
+        font-size: 17px;
+        font-weight: 700;
+        color: #2e5fe6;
+        margin-right: 8px;
+    }
+
+    .shop-page .product-card .price-mrp {
+        font-size: 13px;
+        color: #aab2c5;
+        text-decoration: line-through;
+    }
+
+    .shop-page .product-card .price-meta {
+        display: block;
+        font-size: 12px;
+        color: #8893a8;
+        margin-top: 4px;
+    }
+
+    .shop-page .product-card-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 14px;
+    }
+
+    .shop-page .product-card-actions .qty-input {
+        width: 64px;
+        height: 42px;
+        text-align: center;
+        border: 1px solid #e3e9f4;
+        border-radius: 10px;
+        background: #f8faff;
+        font-weight: 700;
+        color: #1b2740;
+        flex-shrink: 0;
+    }
+
+    .shop-page .product-card-actions .qty-input:focus {
+        outline: none;
+        border-color: #2e5fe6;
+        box-shadow: 0 0 0 3px rgba(46, 95, 230, .12);
+    }
+
+    .shop-page .btn-add-cart {
+        flex: 1;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        height: 42px;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #2e5fe6 0%, #00b8a9 100%);
+        color: #fff;
+        font-weight: 600;
+        font-size: 13.5px;
+        box-shadow: 0 10px 22px rgba(46, 95, 230, .22);
+        transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .shop-page .btn-add-cart:hover {
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 14px 26px rgba(0, 184, 169, .3);
+    }
+
+    @@media (max-width: 991px) {
+        .shop-page .shop-filter-card {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 84%;
+            max-width: 320px;
+            z-index: 1050;
+            border-radius: 0;
+            overflow-y: auto;
+            margin-bottom: 0;
+        }
+
+        .shop-page .shop-filter-card.show {
+            display: block;
+            box-shadow: -8px 0 30px rgba(17, 38, 80, .2);
+        }
+
+        .shop-page .shop-filter-close {
+            display: block;
+        }
+
+        .shop-page .shop-filter-backdrop.show {
+            display: block;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, .45);
+            z-index: 1040;
+        }
+    }
+</style>
+
+<div class="shop-page">
+
+    <!-- Breadcrumb Start -->
+    <div class="breadcrumb-header justify-content-between">
+        <div class="left-content">
+            <div>
+                <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, @Convert.ToString(Context.Session.GetString("UserName"))!</h2>
+                <p class="mg-b-0"> @Convert.ToString(Context.Session.GetString("PartyName"))</p>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <div class="row row-sm">
+
+        <div class="col-lg-3 col-md-12">
+
+            <div class="shop-filter-toggle d-lg-none">
+                <button type="button" class="btn-filter-toggle" id="filterToggleBtn">
+                    <i class="fa fa-sliders" aria-hidden="true"></i> Filters
+                </button>
+            </div>
+
+            <div class="shop-filter-card" id="shopFilterCard">
+                <div class="shop-filter-header">
+                    <h6><i class="fa fa-filter" aria-hidden="true"></i> Filters</h6>
+                    <button type="button" class="shop-filter-close d-lg-none" id="filterCloseBtn">&times;</button>
+                </div>
+
+                <div class="shop-filter-section">
+                    <h6 class="shop-filter-title">Category</h6>
+                    <div class="shop-filter-check"><label><input type="checkbox" checked> Multivitamins</label></div>
+                    <div class="shop-filter-check"><label><input type="checkbox"> Ayurvedic</label></div>
+                    <div class="shop-filter-check"><label><input type="checkbox"> Skin Care</label></div>
+                    <div class="shop-filter-check"><label><input type="checkbox"> Immunity Boosters</label></div>
+                    <div class="shop-filter-check"><label><input type="checkbox"> Herbal Juices</label></div>
+                </div>
+
+                <div class="shop-filter-section">
+                    <h6 class="shop-filter-title">Price Range</h6>
+                    <input type="range" class="shop-filter-range" min="0" max="5000" value="5000">
+                    <div class="shop-filter-price-labels"><span>Rs. 0</span><span>Rs. 5000</span></div>
+                </div>
+
+                <div class="shop-filter-section">
+                    <h6 class="shop-filter-title">Availability</h6>
+                    <div class="shop-filter-check"><label><input type="checkbox" checked> In Stock</label></div>
+                    <div class="shop-filter-check"><label><input type="checkbox"> Out of Stock</label></div>
+                </div>
+
+                <button type="button" class="btn-apply-filter">Apply Filters</button>
+            </div>
+        </div>
+
+        <div class="shop-filter-backdrop" id="filterBackdrop"></div>
+
+        <div class="col-lg-9 col-md-12">
+            <div class="row row-sm row-deck">
+                @if (Model.ProductsList != null && Model.ProductsList.Count() > 0)
+                {
+                    foreach (var item in Model.ProductsList)
+                    {
+                        double mrpVal = 0; double priceVal = 0; double discPct = 0;
+                        double.TryParse(Convert.ToString(item.MRP), out mrpVal);
+                        double.TryParse(Convert.ToString(item.Price), out priceVal);
+                        if (mrpVal > 0 && priceVal > 0 && mrpVal > priceVal)
+                        {
+                            discPct = Math.Round((mrpVal - priceVal) / mrpVal * 100);
+                        }
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                            <div class="card product-card pb-2">
+                                <div class="product-card-media">
+                                    @if (discPct > 0)
+                                    {
+                                        <span class="product-badge">@discPct% OFF</span>
+                                    }
+                                    <img src="@item.ImagePath" class="card-img-top productimg" onerror="this.src='https://zadmin.zoewellness.co.in/images/DefaultProduct.jpg';" alt="Product Picture">
+                                </div>
+                                <input type="hidden" id="hndimg_@item.ProdId" value="@item.ImagePath" />
+                                <input type="hidden" id="hndprod_@item.ProdId" value="@item.ProductName" />
+                                <input type="hidden" id="hndAvailstock_@item.ProdId" value="@Math.Round(item.StockQTY)" />
+                                <div class="card-body">
+                                    <h5 class="title"> @item.ProductName </h5>
+                                    <div class="price">
+                                        <span class="price-current">&#8377; @item.Price</span>
+                                        <del class="price-mrp">&#8377; @item.MRP</del>
+                                        <span class="price-meta">BV : @item.BV &nbsp;|&nbsp; PV : @item.PV</span>
+                                    </div>
+                                    <div class="product-card-actions">
+                                        <input type="number" name="number" onkeyup='QTYChange(@item.StockQTY,@item.ProdId)' id="input_@item.ProdId" class="form-control qty-input" min="1" value="1" required="required">
+                                        <a href="javascript:void(0);" id="btn_@item.ProdId" onclick='Addtocart(@item.ProdId)' class="btn btn-primary btn-add-cart"> <i class="fa fa-shopping-bag" aria-hidden="true"></i> Add to Cart </a>
+                                        <button class="btn btn-primary btn-add-cart" id="hidbtn_@item.ProdId" style="display:none;" type="button" disabled>
+                                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var filterCard = document.getElementById('shopFilterCard');
+        var backdrop = document.getElementById('filterBackdrop');
+        var openBtn = document.getElementById('filterToggleBtn');
+        var closeBtn = document.getElementById('filterCloseBtn');
+
+        function openFilter() {
+            filterCard.classList.add('show');
+            backdrop.classList.add('show');
+        }
+
+        function closeFilter() {
+            filterCard.classList.remove('show');
+            backdrop.classList.remove('show');
+        }
+
+        if (openBtn) openBtn.addEventListener('click', openFilter);
+        if (closeBtn) closeBtn.addEventListener('click', closeFilter);
+        if (backdrop) backdrop.addEventListener('click', closeFilter);
+    });
+</script>
