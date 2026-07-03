@@ -54,7 +54,7 @@
                         @Html.HiddenFor(m => m.objProduct.FixedQty, new { name = "FixedQty", id = "FixedQty" })
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Invoice Type</label>
-                            <div class="col-sm-4">
+                            <div class="col-sm-6">
                                 @Html.HiddenFor(m => m.objCustomer.SelectedInvoiceType, new { id = "hiddenSelectedInvoiceType", name = "hiddenSelectedInvoiceType" })
                                 <select asp-for="SelectedInvoiceType" id="SelectedInvoiceType" onchange="Disablepaymode()" class="form-control" tabindex="0" name="SelectedInvoiceType">
                                     <option value="">--Select Type--</option>
@@ -62,24 +62,14 @@
                                     <option value="BV">BV</option>
                                 </select>
                             </div>
-                            <label for="IdNo" class="col-sm-2 col-form-label">IdNo</label>
-                            <div class="col-sm-4">
-                                @Html.TextBoxFor(m => m.objCustomer.IdNo, new
-                                {
-                                    id = "IdNo",
-                                                                @class = "form-control",
-                                                                autocomplete = "off"
-                                                                })
-
-                               @*  @Html.TextBoxFor(m => m.objCustomer.IdNo, new { name = "IdNo", id = "IdNo", @maxlength = "50", @class = "form-control" }) *@
-                            </div>
+                           
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label Paymodedivlabel" style="display:none;">Payment Method</label>
                             <div class="col-sm-4" id="Paymodediv" style="display:none;">
                                 <select id="PaymentMethodDrop" class="form-control" onchange="DispalyPaymode()" tabindex="0" name="PaymentMethodDrop">
                                     <option value="Cash">Use Cash</option>
-                                    <option value="FPorCou">Use FP or Voucher</option>
+                                   @*  <option value="FPorCou">Use FP or Voucher</option> *@
                                 </select>
                             </div>
                             <label class="col-sm-2 col-form-label" style="display:none;" id="passworddivlabel">Password</label>
@@ -93,8 +83,19 @@
 
                         </div>
                         <div class="row mb-3">
-                            <label for="OfferList" class="col-sm-2 col-form-label"> Choose Offer</label>
+                            <label for="IdNo" class="col-sm-2 col-form-label">IdNo</label>
                             <div class="col-sm-4">
+                                @Html.TextBoxFor(m => m.objCustomer.IdNo, new
+                                {
+                                    id = "IdNo",
+                                    @class = "form-control",
+                                    autocomplete = "off"
+                                })
+
+                                @*  @Html.TextBoxFor(m => m.objCustomer.IdNo, new { name = "IdNo", id = "IdNo", @maxlength = "50", @class = "form-control" }) *@
+                            </div>
+                            <label for="OfferList" class="col-sm-2 col-form-label" style="display:none;"> Choose Offer</label>
+                            <div class="col-sm-4" style="display:none;">
                                 @Html.DropDownListFor(m => m.NewofferId, ViewBag.OfferList as IEnumerable<SelectListItem>, new { tabindex = "0", @class = "form-control", @name = "OfferList", @id = "OfferList" })
                             </div>
                             <label class="col-sm-2 col-form-label">Name</label>
@@ -508,7 +509,7 @@
                 </div>
                 <hr>
                 <div class="row">
-                    <button type="button" id="BillCalculation" class="btn btn-primary mt-4 mr-1">Calculate</button>
+                    <button type="button" id="BillCalculation" class="btn btn-primary mt-4 mr-1" style="display:none;">Calculate</button>
                     <button type="button" id="SaveDistributorForm" class="btn btn-primary mt-4 mr-1">Save</button>
                     <button type="button" id="hidbtn" style="display:none;" class="btn btn-primary mt-4 mr-1" disabled>
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

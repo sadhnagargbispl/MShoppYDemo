@@ -684,6 +684,25 @@ namespace VitaFlow.Infrastructure.Repository
             }
             return objProductNames;
         }
+        private async Task<string> GetMemeberDetail(string IdNo)
+        {
+            bool IsExist = false;
+            try
+            {
+                using (var connection = _context.CreateConnection())
+                {
+                    // M_MemberMaster mein IdNo exist karti hai ya nahi
+                    string query = "SELECT COUNT(1) FROM M_MemberMaster WHERE IDno = @IdNo";
+                    int count = await connection.ExecuteScalarAsync<int>(query, new { IdNo });
+                    IsExist = count > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                IsExist = false;
+            }
+            return IsExist ? "true" : "false";
+        }
         public async Task<CustomerDetail> GetCustInfo(string IdNo)
         {
             CustomerDetail objCustomerDetail = new CustomerDetail();
@@ -692,35 +711,35 @@ namespace VitaFlow.Infrastructure.Repository
                 string MemberResponse = await GetMemeberDetail(IdNo);
                 if (!string.IsNullOrEmpty(MemberResponse))
                 {
-                    var cleanJson = MemberResponse.Replace("\r", "").Replace("\n", "");
-                    MemberAPIRoot memapi = JsonSerializer.Deserialize<MemberAPIRoot>(cleanJson);
-                    if (memapi.Success == "true")
+                    //var cleanJson = MemberResponse.Replace("\r", "").Replace("\n", "");
+                    //MemberAPIRoot memapi = JsonSerializer.Deserialize<MemberAPIRoot>(cleanJson);
+                    if (MemberResponse == "true")
                     {
                         string ElligibleFor = "";
                         int isoldID = 0;
                         using (var connection = _context.CreateConnection())
                         {
-                            if (string.IsNullOrEmpty(memapi.Result.MobileNo))
-                            {
-                                memapi.Result.MobileNo = "0";
-                            }
-                            //Insert new user 
-                            var parameters = new DynamicParameters();
-                            parameters.Add("@Username", memapi.Result.loginid);
-                            parameters.Add("@Password", "123");
-                            parameters.Add("@MemName", memapi.Result.name);
-                            parameters.Add("@MobileNo", memapi.Result.MobileNo);
-                            parameters.Add("@EMail", memapi.Result.email);
-                            parameters.Add("@Address1", memapi.Result.Address);
-                            parameters.Add("@State", memapi.Result.State);
-                            parameters.Add("@City", memapi.Result.city);
+                            //if (string.IsNullOrEmpty(memapi.Result.MobileNo))
+                            //{
+                            //    memapi.Result.MobileNo = "0";
+                            //}
+                            ////Insert new user 
+                            //var parameters = new DynamicParameters();
+                            //parameters.Add("@Username", memapi.Result.loginid);
+                            //parameters.Add("@Password", "123");
+                            //parameters.Add("@MemName", memapi.Result.name);
+                            //parameters.Add("@MobileNo", memapi.Result.MobileNo);
+                            //parameters.Add("@EMail", memapi.Result.email);
+                            //parameters.Add("@Address1", memapi.Result.Address);
+                            //parameters.Add("@State", memapi.Result.State);
+                            //parameters.Add("@City", memapi.Result.city);
 
-                            int result = connection.Execute("Sp_AddMemberDetail", parameters,
-                                commandType: CommandType.StoredProcedure
-                            );
+                            //int result = connection.Execute("Sp_AddMemberDetail", parameters,
+                            //    commandType: CommandType.StoredProcedure
+                            //);
 
                             //Check user
-                            string query = "select a.Passw,a.Doj,a.UpgradeDate,a.Mobl,a.FormNo,a.MemFirstName+' '+ a.MemLastName as Name,a.KitId,a.IDno as IDno,a.Address1+','+a.Address2+','+a.City as Address,a.StateCode as StateCode,a.City,ISNULL(s.StateName,'') StateName,a.ActiveStatus as ActiveStatus,a.IsBlock as IsBlock,IsOldID=IIF(a.RefID>0,1,0),a.Imported as ElligibleFor,b.idno as RefId,b.MemFirstName+' '+ b.MemLastName as RefName,a.PanNo,a.District FROM M_MemberMaster b,M_MemberMaster a LEFT JOIN M_StateDivMaster s ON a.StateCode=s.StateCode WHERE a.RefFormNo=b.FormNo AND a.IDno=@IdNo";
+                            string query = "select a.Passw,a.Doj,a.UpgradeDate,a.Mobl,a.FormNo,a.MemFirstName+' '+ a.MemLastName as Name,a.KitId,a.IDno as IDno,a.Address1+','+a.Address2+','+a.City as Address,a.StateCode as StateCode,a.City,ISNULL(s.StateName,'') StateName,a.ActiveStatus as ActiveStatus,a.IsBlock as IsBlock,IsOldID=IIF(a.RefID>0,1,0),a.Imported as ElligibleFor,a.PanNo,a.District FROM M_MemberMaster a LEFT JOIN M_StateDivMaster s ON a.StateCode=s.StateCode WHERE a.IDno=@IdNo";
                             var reader = await connection.QueryFirstOrDefaultAsync(query, new { IdNo });
                             if (reader != null)
                             {
@@ -942,25 +961,26 @@ namespace VitaFlow.Infrastructure.Repository
             }
             return Response;
         }
-        private async Task<string> GetMemeberDetail(string Username)
-        {
-            string Response = string.Empty;
-            try
-            {
-                var client = new HttpClient();
-                var request = new HttpRequestMessage(HttpMethod.Post, "https://zoewellness.co.in/Api/api.ashx");
-                var content = new StringContent("{\"act\":\"LOGIN\",\"uid\":\"" + Username + "\",\"pwd\":\"234\",\"logkey\":\"ZoewellnessgugddkhJJHJsddd\"}", null, "application/json");
-                request.Content = content;
-                var response = await client.SendAsync(request);
-                response.EnsureSuccessStatusCode();
-                Response = await response.Content.ReadAsStringAsync();
-            }
-            catch (Exception ex)
-            {
+       
+        //private async Task<string> GetMemeberDetail(string Username)
+        //{
+        //    string Response = string.Empty;
+        //    try
+        //    {
+        //        var client = new HttpClient();
+        //        var request = new HttpRequestMessage(HttpMethod.Post, "https://zoewellness.co.in/Api/api.ashx");
+        //        var content = new StringContent("{\"act\":\"LOGIN\",\"uid\":\"" + Username + "\",\"pwd\":\"234\",\"logkey\":\"ZoewellnessgugddkhJJHJsddd\"}", null, "application/json");
+        //        request.Content = content;
+        //        var response = await client.SendAsync(request);
+        //        response.EnsureSuccessStatusCode();
+        //        Response = await response.Content.ReadAsStringAsync();
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-            }
-            return Response;
-        }
+        //    }
+        //    return Response;
+        //}
         private async Task<string> GetMemeberDetail(string Username, string Password)
         {
             string Response = string.Empty;
@@ -5186,10 +5206,20 @@ FROM TrnVoucher";
                     if (userInfo != null)
                     {
                         LoginGroupId = userInfo.GroupId;
-                        IsSoldByHo = (LoginGroupId == 0);
-                        IsAdmin = (userInfo.IsAdmin == "Y");
+
+                        if (LoginGroupId == 0)
+                        {
+                            IsSoldByHo = true;
+                        }
+                        else
+                        {
+                            IsSoldByHo = false;
+                        }
+                        IsAdmin = userInfo.IsAdmin == "Y" ? true : false;
+                        //  IsSoldByHo = (LoginGroupId == 0);
+                        // IsAdmin = (userInfo.IsAdmin == "Y");
                         SameLevelBilling = userInfo.SameLevelBilling;
-                    }
+                   }
 
                     // -----------------------------------------
                     // GET PARTY LIST WITH OR WITHOUT WALLET

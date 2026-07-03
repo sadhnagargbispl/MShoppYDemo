@@ -804,65 +804,7 @@
           function clearError() {
             $("#paymodeError").text("");
         }
-        //$("#AmountByPaytm").focusout(function () {
-        //    var enteredValue = $("#AmountByPaytm").val();
-        //    if (enteredValue != null && enteredValue != "") {
-        //        enteredValue = parseFloat(enteredValue);
-        //    }
-        //    else {
-        //        enteredValue = 0;
-        //    }
-        //    var f = true;
-        //    var exisitngAmount = 0;
-        //    if (enteredValue <= NetAmounPayable) {
-        //        for (var i = 0; i < LatestAmountEnteresdInPayMode.length; i++) {
-        //            if (LatestAmountEnteresdInPayMode[i].Paymode == "P") {
-        //                exisitngAmount = LatestAmountEnteresdInPayMode[i].Amount;
-        //                LatestAmountEnteresdInPayMode[i].Amount = enteredValue;
-        //                f = false;
-        //                break;
-        //            }
-        //        }
-        //        if (f) {
-        //            LatestAmountEnteresdInPayMode.push({ "Paymode": "P", "Amount": enteredValue });
-        //        }
-        //        NetPayableAmountFinal -= exisitngAmount;
-        //        NetPayableAmountFinal += enteredValue;
-
-        //        $("#TotalPaymodeAmt").val(NetPayableAmountFinal);
-        //        SetCashAmountTextbox(enteredValue);
-        //    }
-        //    else {
-        //        $("#AmountByPaytm").val(0);
-        //        OpenDialog("dialogMessage", "Amount is more than Payable amount!", "false");
-        //    }
-        //});
-        //$('#P').change(function () {
-        //    if ($(this).is(":checked")) {
-        //        $("#AmountByPaytm").prop("disabled", '');
-        //        $("#PaytmTransactionId").prop("disabled", '');
-
-        //    }
-        //    else {
-        //        var enteredValue = $("#AmountByPaytm").val();
-        //        if (enteredValue != null && enteredValue != "") {
-        //            enteredValue = parseFloat(enteredValue);
-        //            NetPayableAmountFinal = NetPayableAmountFinal - enteredValue;
-        //        }
-        //        LatestAmountEnteresdInPayMode = $.grep(LatestAmountEnteresdInPayMode, function (e) {
-        //            return e.Paymode != "P";
-        //        });
-        //        $("#AmountByPaytm").val(0);
-        //        $("#TotalPaymodeAmt").val(NetPayableAmountFinal);
-        //        $("#AmountByPaytm").prop("disabled", "disabled");
-        //        $("#PaytmTransactionId").prop("disabled", "disabled");
-
-        //        // $("#CardType").prop("disabled", "disabled");
-        //        //$("#DDBankName").prop("disabled", "disabled");
-        //    }
-
-        //});
-
+       
 
         $("#SearchText").focusout(function () {
             console.log("in function");
@@ -1022,82 +964,7 @@
                 return false;
             }
         });
-        //function changeValues() {
-        //    SearchText = $("#SearchText").val();
-        //    console.log("iSearchText:", SearchText);
-        //    if (SearchText == "P") {
-
-        //        $("#Barcode").prop("readonly", true);
-        //        $("#Barcode").addClass("input-readonly");
-        //        $("#ProductName").prop("readonly", '');
-        //        $("#ProductName").removeClass("input-readonly");
-        //        $("#Barcode").hide();
-        //        $("#BarcodeList").show();
-        //        $("#BarcodeList").empty();
-
-        //        $("#BatchcodeList").show();
-        //        $("#BatchcodeList").empty();
-        //        $("#ProductName").show();
-        //        $("#ProductNameList").hide();
-        //        $("#ProductNameList").empty();
-        //        $("#ProductName").autocomplete({
-        //            source: function (request, response) {
-        //                var results = $.ui.autocomplete.filter(ItemList, request.term);
-
-        //                response(results.slice(0, 50));
-        //                //response(results);
-        //                //$('html').getNiceScroll().resize();
-        //                //$('#sidebar').getNiceScroll().resize();
-        //                //$('.scroll-panel').getNiceScroll().resize();
-        //                //response(ItemList);
-        //            },
-        //            minLength: 1,
-        //            scroll: true,
-        //            select: function (event, ui) {
-        //                //$("#txDestination").val(ui.item.label);
-        //                //cityID = ui.item.id;
-        //                console.log("ui.item", ui.item.label);
-        //                $("#ProductName").val(ui.item.label);
-        //                GetProductInfo("P", ui.item.label);
-        //                return false;
-        //            },
-
-        //        }).focus(function () {
-        //            $(this).autocomplete("search", "");
-        //        });
-        //        //$("#ProductName").focusout(function () {
-        //        //    GetProductInfo("P");
-        //        //});
-        //        $("#Barcode").unbind("focusout");
-        //        $("#ProductName").focus();
-        //    }
-        //    if (SearchText == "B") {
-
-        //        $("#ProductName").prop("readonly", true);
-        //        $("#ProductName").addClass("input-readonly");
-        //        $("#Barcode").prop("readonly", '');
-        //        $("#Barcode").removeClass("input-readonly");
-        //        $("#ProductName").hide();
-        //        $("#ProductNameList").show();
-        //        $("#ProductNameList").empty();
-
-        //        $("#Barcode").show();
-        //        $("#BarcodeList").hide();
-        //        $("#BarcodeList").empty();
-        //        $("#BatchcodeList").show();
-        //        $("#BatchcodeList").empty();
-        //        $("#Barcode").focusout(function (e) {
-        //            e.preventDefault();
-        //            e.stopPropagation();
-        //            GetProductInfo("B", $("#Barcode").val());
-        //            $("#Quantity").focus();
-        //        });
-        //        $("#ProductName").unbind("autocomplete");
-        //        $("#Barcode").focus();
-        //        // resetProductDetails();
-        //        //ClearProductdetailsWithoutChangingValues();
-        //    }
-        //}
+       
         $("#ProductName").keydown(function (event) {
             if (event.keyCode == 13) {
                 if ($("#ProductName").val().length == 0) {
@@ -2549,35 +2416,6 @@
 
                         }
 
-
-                     //    if (objResponse.ResponseStatus == "OK") {
-                     //        //OpenDialog("dialogMessage", objResponse.ResponseMessage, "false");
-                     //        //OpenDialog("dialogMessage", "Do you want to print bill?", "true");
-                     //        //if (IsYes == true) {
-                     //        //PrintElem();
-                     //        var BillNo = objResponse.ResponseDetailsToPrint.BillNo;
-                     //        var SoldBy = objResponse.ResponseDetailsToPrint.SoldBy;
-                     //        var BillType = objResponse.ResponseDetailsToPrint.BillType;
-                     //        console.log("BillNo", BillNo);
-                     //        //openBill(BillNo, SoldBy, BillType);
-                     //        window.location.href = '@Url.Action("PartyBill", "Transaction")';
-                     //        //}
-                     //        //else {
-
-
-                     //        @*window.location.href = '@Url.Action("InvoicePrint", "Transaction")';*@
-                     //        //}
-                     //    }
-                     //    else {
-                          
-                     //          toastr.error(objResponse.ResponseMessage, 'Error', {
-                     //    closeButton: true,
-                     //    progressBar: true,
-                     //    positionClass: 'toast-top-right',
-                     //    timeOut: 8000, // 8 seconds
-                     //    extendedTimeOut: 2000 // 2 second longer than timeOut
-                     // });
-                     //    }
                     }
                 },
                 error: function (xhr, data) {
@@ -2587,35 +2425,6 @@
                 }
             });
         }
-
-        // $("#BillDateStr").datetimepicker({
-
-
-        //     format: 'DD-MM-YYYY'
-        //     ,
-        //     // todayHighlight:true,
-        //     widgetPositioning: {
-        //         horizontal: 'auto',
-        //         vertical: 'bottom'
-        //     }
-
-        // }).on('dp.change', function (e) {
-        //     //// console.log(e.date);
-        //     //// fromDate = $('#FromDatePickerWidget').val();
-        //     var selectedDate = e.date._d;
-        //     console.log(selectedDate.getMonth());
-        //     console.log(selectedDate.getMonth() + 1);
-        //     var lengthOfMonth = ((selectedDate.getMonth() + 1).toString()).length;
-        //     console.log(lengthOfMonth);
-        //     var twoDigitMonth = (lengthOfMonth > 1) ? (selectedDate.getMonth() + 1) : '0' + (selectedDate.getMonth() + 1);
-
-        //     var newDate = selectedDate.getDate() + "-" + twoDigitMonth + "-" + selectedDate.getFullYear();
-        //     console.log("newDate", newDate);
-        //     billDate = newDate;
-        //     $("#PartyName").focus();
-
-
-        // });
         $("#UserPartyCode").focusout(function () {
             var userpcode = $("#UserPartyCode").val();
             GetPartyInfo(userpcode);
@@ -2677,39 +2486,8 @@
                 $('#AmountByVoucher').prop('readonly', true);
                 $("#hidfpamt").val('0');
                 $("#AmountByVoucher").val('0');
-                //var offercheckedCount = $('.bvoffer:checked').length;
-                //if (offercheckedCount == 0) {
-                //    $("#userpassw").prop("disabled", true);
-                //    $("#Varify").prop("disabled", true);
-                //}
-                //$("#FpVoucher").prop("disabled", true);
-                //$("#FpVoucher").val('');
-                //$("#hidfpamt").val('0');
-                //$("#AmountByVoucher").val('0');
-                //$("#vamt").val('0');
-                //CVClaculation();
             }
         });
-
-        //$('input[name="TaxORStock"]').change(function () {
-        //    debugger;
-        //    let selected = $(this).val();
-        //    //let hasCalc = ProductGrid.some(x => x.IsCalc === true);
-        //    //if (hasCalc == true)
-        //    //{
-        //    //    $('input[name="TaxORStock"][value="tax"]').prop('checked', true);
-        //    //    return false;
-        //    //}
-        //    if (selected === "stock") {
-        //        $("#BillCalculation").attr("disabled", true);
-        //        $("#IsV").attr("disabled", true);
-        //    }
-        //    else if (selected === "tax") {
-        //        $("#BillCalculation").attr("disabled", false);
-        //        $("#IsV").attr("disabled", false);
-        //    }
-        //});
-
     });
 
     function resetBilltype() {
@@ -2780,8 +2558,6 @@
             }
         }
     }
-
-
     function GetPartyInfo(label) {
 
         for (var i = 0; i < FullPartyList.length; i++) {
@@ -2811,24 +2587,6 @@
             }
         }
     }
-    //});
-    //function SetSpecificCode(type, label) {
-
-
-    //    if (type == "Party") {
-    //        for (var i = 0; i < FullPartyList.length; i++) {
-    //            if (FullPartyList[i].PartyName == label) {
-    //                if (FullPartyList[i].GroupId == 5)
-    //                    break;
-    //                $("#PartyCode").val(FullPartyList[i].PartyCode);
-    //                $("#SelectedPartyStateCode").val(FullPartyList[i].StateCode);
-    //                break;
-    //            }
-    //        }
-    //    }
-    //}
-
-
     function GetAllParty() {
          
         $.ajax({
