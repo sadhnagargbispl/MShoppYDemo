@@ -661,26 +661,27 @@ namespace VitaFlow.Presenation.Controllers
                     orderreq.GroupId = Convert.ToInt32(HttpContext.Session.GetString("GroupId"));
 
                     HttpContext.Session.SetString("OrderNo", orderreq.OrderNo);
-                    if (result.PackageAmount > (orderreq.NetAmount + orderreq.Promobalance) && GetPartyOrderlist.Count == 0)
+                    if (Walletbalance >= orderreq.NetAmount)
                     {
-                        objResponse.ResponseStatus = "FAILED";
-                        objResponse.ResponseMessage = "Sorry!Your cart amount is less than selected package";
-                        objResponse.StatusCode = 101;
+                        //save order detail---------------------------------------------
+                        objResponse = await i_Product.SavePartyOrderDetails(orderreq);
                     }
                     else
                     {
-                        if (Walletbalance >= orderreq.NetAmount)
-                        {
-                            //save order detail---------------------------------------------
-                            objResponse = await i_Product.SavePartyOrderDetails(orderreq);
-                        }
-                        else
-                        {
-                            objResponse.ResponseStatus = "FAILED";
-                            objResponse.ResponseMessage = "Sorry!Insufficient Wallet Balance.";
-                            objResponse.StatusCode = 101;
-                        }
+                        objResponse.ResponseStatus = "FAILED";
+                        objResponse.ResponseMessage = "Sorry!Insufficient Wallet Balance.";
+                        objResponse.StatusCode = 101;
                     }
+                    //if (result.PackageAmount > (orderreq.NetAmount + orderreq.Promobalance) && GetPartyOrderlist.Count == 0)
+                    //{
+                    //    objResponse.ResponseStatus = "FAILED";
+                    //    objResponse.ResponseMessage = "Sorry!Your cart amount is less than selected package";
+                    //    objResponse.StatusCode = 101;
+                    //}
+                    //else
+                    //{
+
+                    //}
                 }
                 else
                 {

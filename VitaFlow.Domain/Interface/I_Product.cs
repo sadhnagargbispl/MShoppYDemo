@@ -29,5 +29,6 @@ namespace VitaFlow.Domain.Interface
         Task<int> CheckPackageSelection(string Partycode);
         Task<int> SaveFranchisepackage(string Fcode, int Packageid);
         Task<PackageMasterDetail> GetPartyPackageAmount(string Partycode);
-     }
+        Task<List<M_SubCatMaster>> GetSubCategories();
+    }
 }

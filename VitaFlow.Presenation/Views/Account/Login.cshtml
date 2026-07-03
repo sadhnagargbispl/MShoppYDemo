@@ -161,9 +161,10 @@
             <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30">
                 <form class="login100-form validate-form" asp-controller="Account" asp-action="Login" method="post" id="contactForm">
                     <div class="login100-form-title p-b-10 text-center" align="center">
-                        <img src="~/assets/img/logo-color.png" alt="" class="img-responsive text-center" width="150">
+                        <img src="~/assets/img/logo (1).png" alt="" class="img-responsive text-center" width="150" />
+                       @*  <img src="~/assets/img/logo-color.png" alt="" class="img-responsive text-center" width="150"> *@
                     </div>
-
+                    
                     <span class="login100-form-title p-b-30 logintext">Login Account </span>
 
                     <span class="text-danger">@ViewBag.loginerr </span>
@@ -176,6 +177,8 @@
                         </span>
                         <span asp-validation-for="Username" class="text-danger"></span>
                     </div>
+
+
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Password is required">
                         <input class="input100" asp-for="Password" type="password" name="password" placeholder="Password" />
                         <span class="focus-input100"></span>

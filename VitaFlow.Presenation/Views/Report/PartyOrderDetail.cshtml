@@ -21,7 +21,9 @@
         {
             <tr>
                 <td>
-                    <img src="@item.ImagePath" class="img-responsive" />
+                    <img src="https://d9franchise.bisplindia.in/ProductImages/@item.ImagePath"
+                         class="img-responsive"
+                         onerror="this.src='/images/no-image.png';" />
                 </td>
                 <td>@item.ProductName</td>
                 <td>@item.TotalOrdQty</td>

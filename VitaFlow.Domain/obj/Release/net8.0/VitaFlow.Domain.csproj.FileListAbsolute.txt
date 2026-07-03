@@ -37,3 +37,16 @@ E:\Sadhna Garg\GithhubFranchise\VitaFlow_Shopping\VitaFlow.Domain\obj\Release\ne
 E:\Sadhna Garg\GithhubFranchise\VitaFlow_Shopping\VitaFlow.Domain\obj\Release\net8.0\refint\VitaFlow.Domain.dll
 E:\Sadhna Garg\GithhubFranchise\VitaFlow_Shopping\VitaFlow.Domain\obj\Release\net8.0\VitaFlow.Domain.pdb
 E:\Sadhna Garg\GithhubFranchise\VitaFlow_Shopping\VitaFlow.Domain\obj\Release\net8.0\ref\VitaFlow.Domain.dll
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\bin\Release\net8.0\VitaFlow.Domain.deps.json
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\bin\Release\net8.0\VitaFlow.Domain.dll
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\bin\Release\net8.0\VitaFlow.Domain.pdb
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\obj\Release\net8.0\VitaFlow.Domain.csproj.AssemblyReference.cache
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\obj\Release\net8.0\VitaFlow.Domain.GeneratedMSBuildEditorConfig.editorconfig
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\obj\Release\net8.0\VitaFlow.Domain.AssemblyInfoInputs.cache
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\obj\Release\net8.0\VitaFlow.Domain.AssemblyInfo.cs
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\obj\Release\net8.0\VitaFlow.Domain.csproj.CoreCompileInputs.cache
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\obj\Release\net8.0\VitaFlow.Domain.sourcelink.json
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\obj\Release\net8.0\VitaFlow.Domain.dll
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\obj\Release\net8.0\refint\VitaFlow.Domain.dll
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\obj\Release\net8.0\VitaFlow.Domain.pdb
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Domain\obj\Release\net8.0\ref\VitaFlow.Domain.dll

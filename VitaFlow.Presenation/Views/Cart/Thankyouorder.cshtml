@@ -273,7 +273,7 @@
                 <div class="thankyou-hero-card">
                     <img src="~/assets/img/thankimg.png" alt="thank you" class="thankyou-hero-img img-responsive">
                     <h2>Order Placed Successfully!</h2>
-                    <p class="thankyou-lead">Thanks for placing your order with us here at <b>( Vitaflow Healthcare Pvt. Ltd.)</b></p>
+                    <p class="thankyou-lead">Thanks for placing your order with us here at <b>( DARJUV9 Pvt. Ltd.)</b></p>
                     <p class="thankyou-sub">Please find your order status in the "Orders" section in your account. Your order has been placed successfully.</p>
 
                     <div class="thankyou-actions">
@@ -310,11 +310,11 @@
                     <div class="thankyou-order-header">
                         <h5>Your Order Details</h5>
                     </div>
-
                     @foreach (var item in Model.OrderConfirmation)
                     {
                         <div class="thankyou-order-item">
-                            <img src="@item.ImagePath" alt="Product-image">
+                            <img src="https://d9franchise.bisplindia.in/ProductImages/@item.ImagePath" alt="@item.ProductName"
+                                 onerror="this.onerror=null;this.src='/assets/img/no-image.png';">
                             <div class="thankyou-order-item-info">
                                 <h6>@item.ProductName</h6>
                                 <p>Code: @item.ProductCode &nbsp;|&nbsp; QTY: @item.Qty &nbsp;|&nbsp; Order No: @item.OrderNo</p>

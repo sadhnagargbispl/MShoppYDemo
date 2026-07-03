@@ -27,19 +27,40 @@ namespace VitaFlow.Presenation.Controllers
                 {
                     return RedirectToAction("PackageSelection", "Cart");
                 }
+
                 M_product obj = new M_product();
                 obj.ProductsList = await i_Product.Productlist(HttpContext.Session.GetString("ParentPartyCode"));
+                obj.SubCategoriesList = await i_Product.GetSubCategories();   // NEW
                 return View(obj);
             }
             else
             {
                 return RedirectToAction("Login", "Account");
             }
-
         }
+        //public async Task<IActionResult> Productlist()
+        //{
+        //    if (!string.IsNullOrEmpty(HttpContext.Session.GetString("Status")))
+        //    {
+        //        int Selectedpackageid = 0;
+        //        Selectedpackageid = await i_Product.CheckPackageSelection(Convert.ToString(HttpContext.Session.GetString("FCode")));
+        //        if (Selectedpackageid == 0)
+        //        {
+        //            return RedirectToAction("PackageSelection", "Cart");
+        //        }
+        //        M_product obj = new M_product();
+        //        obj.ProductsList = await i_Product.Productlist(HttpContext.Session.GetString("ParentPartyCode"));
+        //        return View(obj);
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Login", "Account");
+        //    }
+
+        //}
 
         [HttpPost]
-        public async Task<ActionResult> Addtocart(string ProdId, string ProdName, string imagePath, string Qty)
+        public async Task<ActionResult> Addtocart(string ProdId, string ProdName, string imagePath, string Qty,string BatchNo)
         {
             string Rstr = string.Empty;
             string msg = string.Empty;
@@ -51,6 +72,7 @@ namespace VitaFlow.Presenation.Controllers
                 cartRequest.ProdName = ProdName;
                 cartRequest.imagePath = imagePath;
                 cartRequest.qty = Convert.ToDecimal(Qty);
+                cartRequest.BatchNo = BatchNo;
                 cartRequest.FCode = HttpContext.Session.GetString("FCode");
                 cartRequest.Action = "AddTocartDeatils";
                 cartRequest.UnqiueId = "";

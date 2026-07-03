@@ -34,6 +34,7 @@ namespace VitaFlow.Domain.Entities
         public string VType { get; set; }
         public string StartDate { get; set; }
         public string EndDate { get; set; }
+        public string WalletTypes { get; set; }
     }
 
     

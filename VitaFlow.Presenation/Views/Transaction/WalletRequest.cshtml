@@ -331,6 +331,20 @@
                             timeOut: 5000, // 5 seconds
                             extendedTimeOut: 1000 // 1 second longer than timeOut
                         });
+
+                         $('#walletreqform')[0].reset();
+
+        // Manually clear fields that reset() may not handle cleanly
+        $("#amount").val('');
+        $("#trndate").val('');
+        $("#paymode").val('0');
+        $("#BankName").val('0');
+        $("#VType").val('0');
+        $("#remark").val('');
+        $("#timage").val('');
+        $(".browse-file").val('');   // "choose" text box clear
+        $("#bankdiv").hide();        // bank dropdown wapas chhupa do
+
                     } else {
                         toastr.error("Request fail", 'Error', {
                             closeButton: true,

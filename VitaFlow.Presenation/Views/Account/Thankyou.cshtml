@@ -3,7 +3,36 @@
     Layout = null;
 }
 
+<style>
+    /* ===== Registration page background — Login jaisa soft gradient ===== */
+    .container-login100 {
+        background: linear-gradient(135deg, #dbe9f9 0%, #eef2f9 50%, #e3ddf0 100%) !important;
+    }
 
+    /* ===== SUBMIT button — Login page jaisa blue-to-teal gradient ===== */
+    .login100-form-btn {
+        background: linear-gradient(to right, #155fa0 0%, #0d9488 100%) !important;
+        border: none !important;
+        color: #ffffff !important;
+        transition: all 0.3s ease;
+    }
+
+        .login100-form-btn:hover {
+            background: linear-gradient(to right, #0d9488 0%, #155fa0 100%) !important;
+            box-shadow: 0 6px 16px rgba(13, 148, 136, 0.35);
+        }
+
+    /* ===== Placeholder text ko readable banane ke liye ===== */
+    .registratoninput::placeholder {
+        color: #6b7280 !important;
+        opacity: 1;
+    }
+
+    /* Dropdown (Apply for / State / Parent Party) ka faint text bhi dark ===== */
+    .registratoninput {
+        color: #374151 !important;
+    }
+</style>
 <!DOCTYPE html>
 <!-- saved from url=(0048)https://colorlib.com/etc/lf/Login_v11/index.html -->
 <html lang="en">
@@ -11,6 +40,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Thank You</title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" type="image/png" href="https://colorlib.com/etc/lf/Login_v11/images/icons/favicon.ico"/>
     <link rel="icon" type="image/png" href="https://colorlib.com/etc/lf/Login_v11/images/icons/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="~/login_files/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="~/login_files/font-awesome.min.css"/>
@@ -32,7 +62,7 @@
             <div class="registrationbox p-l-50 p-r-50 p-t-77 p-b-30">
                 <form class="login100-form validate-form">
                     <div class="login100-form-title p-b-10 text-center" align="center">
-                        <img src="assets/img/logo-color.png" alt="" class="img-responsive text-center" width="120">
+                        <img src="~/assets/img/logo (1).png" alt="" class="img-responsive text-center" width="120">
                     </div>
 
 
@@ -46,7 +76,7 @@
                         <br>
                         <p>If you have any questions or need further assistance, please don't hesitate to contact us at 0.</p>
                         <hr>
-                        <p> Best regards : <br> <b> Vitaflow Healthcare Pvt. Ltd. </b> </p>
+                        <p> Best regards : <br> <b> DARJUV9 Pvt. Ltd. </b> </p>
 
                     </div>
 

@@ -13,6 +13,65 @@
     string PartyCaption = ViewBag.PartyCaption;
     string LoginuserType = Context.Session.GetString("LoginUserType");
 }
+<style>
+    /* Stock Report - mobile responsive ONLY. Desktop untouched (>=768px). */
+    @@media (max-width: 767.98px) {
+        /* --- Filter card footer: buttons stack, no float crowding --- */
+        #distributorForm .card-footer
+
+    {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    /* Download Excel full width on top */
+    #distributorForm .card-footer #btnExport {
+        width: 100%;
+        margin: 0;
+        order: 1;
+    }
+    /* Batch Wise + Finish/Current group full width below, no float */
+    #distributorForm .card-footer .btn-group.fa-pull-right {
+        float: none !important;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin: 0;
+        order: 2;
+    }
+
+    #distributorForm .card-footer .btn-group .form-group.form-check {
+        width: 100%;
+        margin: 0 !important;
+        padding-left: 1.5rem;
+    }
+    /* Finish Stock & Current Stock share the row equally */
+    #distributorForm .card-footer #FinishStock,
+    #distributorForm .card-footer #CurrentStock {
+        flex: 1 1 0;
+        margin: 0 !important;
+    }
+
+    /* --- Totals footer: stack vertically instead of overflowing --- */
+    .list-group.list-group-horizontal.fa-pull-right {
+        float: none !important;
+        display: flex !important;
+        flex-direction: column;
+        width: 100%;
+    }
+
+        .list-group.list-group-horizontal.fa-pull-right .list-group-item {
+            width: 100%;
+            border-radius: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+    }
+</style>
 <script type="text/javascript">
     var grid, dialog;
     var StockGrid = [{}];

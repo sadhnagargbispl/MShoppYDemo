@@ -64,7 +64,14 @@
                             </div>
                             <label for="IdNo" class="col-sm-2 col-form-label">IdNo</label>
                             <div class="col-sm-4">
-                                @Html.TextBoxFor(m => m.objCustomer.IdNo, new { name = "IdNo", id = "IdNo", @maxlength = "50", @class = "form-control" })
+                                @Html.TextBoxFor(m => m.objCustomer.IdNo, new
+                                {
+                                    id = "IdNo",
+                                                                @class = "form-control",
+                                                                autocomplete = "off"
+                                                                })
+
+                               @*  @Html.TextBoxFor(m => m.objCustomer.IdNo, new { name = "IdNo", id = "IdNo", @maxlength = "50", @class = "form-control" }) *@
                             </div>
                         </div>
                         <div class="row mb-3">

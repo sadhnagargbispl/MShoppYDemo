@@ -3,17 +3,31 @@
 @{
     ViewData["Title"] = "Productlist";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    // ⚠️ IMPORTANT: yahan wahi folder/base URL lagayein jahan product images actually store hoti hain.
+    var imgBase = "https://d9franchise.bisplindia.in/ProductImages/";
+    var defaultImg = "https://d9franchise.bisplindia.in/images/DefaultProduct.jpg";
+
+    // ---- Dynamic max price for slider ----
+    int maxPriceInt = 5000;
+    if (Model.ProductsList != null && Model.ProductsList.Count() > 0)
+    {
+        double maxP = 0;
+        foreach (var p in Model.ProductsList)
+        {
+            double v = 0;
+            double.TryParse(Convert.ToString(p.Price), out v);
+            if (v > maxP) maxP = v;
+        }
+        maxPriceInt = (int)Math.Max(1, Math.Ceiling(maxP));
+    }
 }
 
 <script type="text/javascript">
 
-
     function QTYChange(sqty, prodid) {
         var Qty = $("#input_" + prodid).val();
-
-        if (Qty == "") {
-            return false;
-        }
+        if (Qty == "") { return false; }
         if (parseInt(Qty) <= 0) {
             $("#input_" + prodid).val("1");
             return false;
@@ -21,43 +35,26 @@
     }
 
     function Addtocart(ProdId) {
+        debugger;
         var Qty = $("#input_" + ProdId).val();
         var availqty = $("#hndAvailstock_" + ProdId).val();
         if (Qty == "") {
-            toastr.error("Please enter qty", 'Error', {
-                closeButton: true,
-                progressBar: true,
-                positionClass: 'toast-top-right',
-                timeOut: 5000, // 5 seconds
-                extendedTimeOut: 1000 // 1 second longer than timeOut
-            });
+            toastr.error("Please enter qty", 'Error', { closeButton: true, progressBar: true, positionClass: 'toast-top-right', timeOut: 5000, extendedTimeOut: 1000 });
             return false;
         }
         if (parseInt(Qty) <= 0) {
-            toastr.error("Quntity greater than 0", 'Error', {
-                closeButton: true,
-                progressBar: true,
-                positionClass: 'toast-top-right',
-                timeOut: 5000, // 5 seconds
-                extendedTimeOut: 1000 // 1 second longer than timeOut
-            });
+            toastr.error("Quntity greater than 0", 'Error', { closeButton: true, progressBar: true, positionClass: 'toast-top-right', timeOut: 5000, extendedTimeOut: 1000 });
             return false;
         }
-
         if (parseInt(Qty) > parseInt(availqty)) {
             var msg = 'Please enter a number less than or equal to ' + availqty;
-            toastr.error(msg, 'Error', {
-                closeButton: true,
-                progressBar: true,
-                positionClass: 'toast-top-right',
-                timeOut: 5000, // 5 seconds
-                extendedTimeOut: 1000 // 1 second longer than timeOut
-            });
+            toastr.error(msg, 'Error', { closeButton: true, progressBar: true, positionClass: 'toast-top-right', timeOut: 5000, extendedTimeOut: 1000 });
             return false;
         }
 
         var ProdName = $("#hndprod_" + ProdId).val();
         var imagePath = $("#hndimg_" + ProdId).val();
+        var BatchNo = $("#hndbatch_" + ProdId).val();
         $.ajax({
             type: "POST",
             url: "/Product/Addtocart",
@@ -68,48 +65,28 @@
                 $("#btn_" + ProdId).hide();
                 $("#hidbtn_" + ProdId).show();
             },
-            data: { ProdId: ProdId, ProdName: ProdName, imagePath: imagePath, Qty: Qty },
+            data: { ProdId: ProdId, ProdName: ProdName, imagePath: imagePath, Qty: Qty ,BatchNo,BatchNo},
             success: function (data) {
                 if (data.msg == "1") {
                     $("#spncartcount").text(data.total);
                     var str = ProdName + " added to cart";
-                    toastr.success(str, 'Success', {
-                        closeButton: true,
-                        progressBar: true,
-                        positionClass: 'toast-top-right',
-                        timeOut: 5000, // 5 seconds
-                        extendedTimeOut: 1000 // 1 second longer than timeOut
-                    });
+                    toastr.success(str, 'Success', { closeButton: true, progressBar: true, positionClass: 'toast-top-right', timeOut: 5000, extendedTimeOut: 1000 });
                 }
                 else {
                     var str = ProdName + " can not to add in cart";
-                    toastr.error(str, 'Error', {
-                        closeButton: true,
-                        progressBar: true,
-                        positionClass: 'toast-top-right',
-                        timeOut: 5000, // 5 seconds
-                        extendedTimeOut: 1000 // 1 second longer than timeOut
-                    });
+                    toastr.error(str, 'Error', { closeButton: true, progressBar: true, positionClass: 'toast-top-right', timeOut: 5000, extendedTimeOut: 1000 });
                 }
                 $("#btn_" + ProdId).show();
                 $("#hidbtn_" + ProdId).hide();
             },
-            failure: function (response) {
-                console.log(response.responseText);
-                $("#Submitbtn").prop('disabled', false);
-            },
             error: function (response) {
                 console.log(response.responseText);
                 $("#Submitbtn").prop('disabled', false);
-            },
-            failure: function (response) {
-                console.log(response.responseText);
-                $("#Submitbtn").prop('disabled', false);
+                $("#btn_" + ProdId).show();
+                $("#hidbtn_" + ProdId).hide();
             }
         });
     }
-
-
 
 </script>
 
@@ -151,18 +128,18 @@
         border-bottom: 1px solid #eef1f8;
     }
 
-    .shop-page .shop-filter-header h6 {
-        margin: 0;
-        font-weight: 700;
-        color: #1b2740;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
+        .shop-page .shop-filter-header h6 {
+            margin: 0;
+            font-weight: 700;
+            color: #1b2740;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    .shop-page .shop-filter-header h6 i {
-        color: #2e5fe6;
-    }
+            .shop-page .shop-filter-header h6 i {
+                color: #2e5fe6;
+            }
 
     .shop-page .shop-filter-close {
         display: none;
@@ -178,9 +155,9 @@
         margin-bottom: 22px;
     }
 
-    .shop-page .shop-filter-section:last-of-type {
-        margin-bottom: 18px;
-    }
+        .shop-page .shop-filter-section:last-of-type {
+            margin-bottom: 18px;
+        }
 
     .shop-page .shop-filter-title {
         font-size: 12px;
@@ -191,27 +168,60 @@
         margin-bottom: 12px;
     }
 
+    .shop-page .shop-filter-search {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #e3e9f4;
+        border-radius: 10px;
+        background: #f8faff;
+        font-size: 13px;
+        padding: 0 12px;
+        color: #1b2740;
+    }
+
+        .shop-page .shop-filter-search:focus {
+            outline: none;
+            border-color: #2e5fe6;
+            box-shadow: 0 0 0 3px rgba(46, 95, 230, .12);
+        }
+
+    /* NEW: category list scrollable rakhi hai taaki zyada categories hone par card na bada ho */
+    .shop-page .shop-filter-catlist {
+        max-height: 220px;
+        overflow-y: auto;
+        padding-right: 4px;
+    }
+
+        .shop-page .shop-filter-catlist::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .shop-page .shop-filter-catlist::-webkit-scrollbar-thumb {
+            background: #d7deed;
+            border-radius: 6px;
+        }
+
     .shop-page .shop-filter-check {
         margin-bottom: 10px;
     }
 
-    .shop-page .shop-filter-check label {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 13px;
-        color: #4d5875;
-        font-weight: 500;
-        cursor: pointer;
-        margin-bottom: 0;
-    }
+        .shop-page .shop-filter-check label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: #4d5875;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 0;
+        }
 
-    .shop-page .shop-filter-check input {
-        width: 16px;
-        height: 16px;
-        accent-color: #2e5fe6;
-        cursor: pointer;
-    }
+        .shop-page .shop-filter-check input {
+            width: 16px;
+            height: 16px;
+            accent-color: #2e5fe6;
+            cursor: pointer;
+        }
 
     .shop-page .shop-filter-range {
         width: 100%;
@@ -226,31 +236,47 @@
         margin-top: 6px;
     }
 
-    .shop-page .btn-apply-filter {
+    .shop-page .btn-reset-filter {
         display: block;
         width: 100%;
-        padding: 11px;
-        border: none;
+        padding: 9px;
+        margin-top: 10px;
+        border: 1px solid #e3e9f4;
         border-radius: 10px;
-        background: linear-gradient(90deg, #2e5fe6 0%, #00b8a9 100%);
-        color: #fff;
+        background: #fff;
+        color: #6b7891;
         font-weight: 600;
-        font-size: 13px;
-        letter-spacing: .3px;
-        box-shadow: 0 8px 18px rgba(46, 95, 230, .2);
-        transition: transform .2s ease, box-shadow .2s ease;
+        font-size: 12.5px;
+        cursor: pointer;
+        transition: all .2s ease;
     }
 
-    .shop-page .btn-apply-filter:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 10px 22px rgba(0, 184, 169, .3);
+        .shop-page .btn-reset-filter:hover {
+            background: #f6f8fc;
+            color: #2e5fe6;
+        }
+
+    .shop-page .no-products-msg {
+        display: none;
+        width: 100%;
+        text-align: center;
+        padding: 50px 20px;
+        color: #8893a8;
+        font-size: 15px;
+        font-weight: 500;
     }
+
+        .shop-page .no-products-msg i {
+            display: block;
+            font-size: 34px;
+            margin-bottom: 12px;
+            color: #cbd3e2;
+        }
 
     .shop-page .shop-filter-backdrop {
         display: none;
     }
 
-    /* Product card (authored to match live design language) */
     .shop-page .product-card {
         background: #fff;
         border: none;
@@ -261,10 +287,10 @@
         height: 100%;
     }
 
-    .shop-page .product-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 16px 32px rgba(17, 38, 80, .12);
-    }
+        .shop-page .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(17, 38, 80, .12);
+        }
 
     .shop-page .product-card-media {
         position: relative;
@@ -272,13 +298,13 @@
         padding: 10px;
     }
 
-    .shop-page .product-card-media .productimg {
-        height: 220px;
-        width: 100%;
-        object-fit: contain;
-        background: #fff;
-        border-radius: 10px;
-    }
+        .shop-page .product-card-media .productimg {
+            height: 220px;
+            width: 100%;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 10px;
+        }
 
     .shop-page .product-badge {
         position: absolute;
@@ -293,6 +319,22 @@
         border-radius: 20px;
         box-shadow: 0 6px 14px rgba(46, 95, 230, .28);
     }
+
+    .shop-page .stock-badge {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 2;
+        font-size: 10.5px;
+        font-weight: 700;
+        padding: 3px 9px;
+        border-radius: 20px;
+    }
+
+        .shop-page .stock-badge.out {
+            background: #ffe3e3;
+            color: #d64545;
+        }
 
     .shop-page .product-card .card-body {
         padding: 16px 18px 18px;
@@ -339,23 +381,23 @@
         margin-top: 14px;
     }
 
-    .shop-page .product-card-actions .qty-input {
-        width: 64px;
-        height: 42px;
-        text-align: center;
-        border: 1px solid #e3e9f4;
-        border-radius: 10px;
-        background: #f8faff;
-        font-weight: 700;
-        color: #1b2740;
-        flex-shrink: 0;
-    }
+        .shop-page .product-card-actions .qty-input {
+            width: 64px;
+            height: 42px;
+            text-align: center;
+            border: 1px solid #e3e9f4;
+            border-radius: 10px;
+            background: #f8faff;
+            font-weight: 700;
+            color: #1b2740;
+            flex-shrink: 0;
+        }
 
-    .shop-page .product-card-actions .qty-input:focus {
-        outline: none;
-        border-color: #2e5fe6;
-        box-shadow: 0 0 0 3px rgba(46, 95, 230, .12);
-    }
+            .shop-page .product-card-actions .qty-input:focus {
+                outline: none;
+                border-color: #2e5fe6;
+                box-shadow: 0 0 0 3px rgba(46, 95, 230, .12);
+            }
 
     .shop-page .btn-add-cart {
         flex: 1;
@@ -374,11 +416,11 @@
         transition: transform .2s ease, box-shadow .2s ease;
     }
 
-    .shop-page .btn-add-cart:hover {
-        color: #fff;
-        transform: translateY(-2px);
-        box-shadow: 0 14px 26px rgba(0, 184, 169, .3);
-    }
+        .shop-page .btn-add-cart:hover {
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 14px 26px rgba(0, 184, 169, .3);
+        }
 
     @@media (max-width: 991px) {
         .shop-page .shop-filter-card {
@@ -395,10 +437,10 @@
             margin-bottom: 0;
         }
 
-        .shop-page .shop-filter-card.show {
-            display: block;
-            box-shadow: -8px 0 30px rgba(17, 38, 80, .2);
-        }
+            .shop-page .shop-filter-card.show {
+                display: block;
+                box-shadow: -8px 0 30px rgba(17, 38, 80, .2);
+            }
 
         .shop-page .shop-filter-close {
             display: block;
@@ -443,35 +485,59 @@
                     <button type="button" class="shop-filter-close d-lg-none" id="filterCloseBtn">&times;</button>
                 </div>
 
+                <!-- Search (product name se filter) -->
                 <div class="shop-filter-section">
-                    <h6 class="shop-filter-title">Category</h6>
-                    <div class="shop-filter-check"><label><input type="checkbox" checked> Multivitamins</label></div>
-                    <div class="shop-filter-check"><label><input type="checkbox"> Ayurvedic</label></div>
-                    <div class="shop-filter-check"><label><input type="checkbox"> Skin Care</label></div>
-                    <div class="shop-filter-check"><label><input type="checkbox"> Immunity Boosters</label></div>
-                    <div class="shop-filter-check"><label><input type="checkbox"> Herbal Juices</label></div>
+                    <h6 class="shop-filter-title">Search Product</h6>
+                    <input type="text" id="productSearch" class="shop-filter-search" placeholder="Type product name..." autocomplete="off">
                 </div>
 
+                <!-- Price Range (dynamic) -->
                 <div class="shop-filter-section">
                     <h6 class="shop-filter-title">Price Range</h6>
-                    <input type="range" class="shop-filter-range" min="0" max="5000" value="5000">
-                    <div class="shop-filter-price-labels"><span>Rs. 0</span><span>Rs. 5000</span></div>
+                    <input type="range" class="shop-filter-range" id="priceRange" min="0" max="@maxPriceInt" value="@maxPriceInt" step="1">
+                    <div class="shop-filter-price-labels">
+                        <span>&#8377; 0</span>
+                        <span>Up to <strong id="priceRangeMaxLabel">&#8377; @maxPriceInt</strong></span>
+                    </div>
                 </div>
 
+                <!-- Category (M_SubCatMaster ke hisaab se) -->
+                <div class="shop-filter-section">
+                    <h6 class="shop-filter-title">Category</h6>
+                    <div class="shop-filter-catlist">
+                        @if (Model.SubCategoriesList != null && Model.SubCategoriesList.Any())
+                        {
+                            foreach (var cat in Model.SubCategoriesList)
+                            {
+                                <div class="shop-filter-check">
+                                    <label>
+                                        <input type="checkbox" class="cat-filter" value="@cat.SubCatId"> @cat.SubCatName
+                                    </label>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <p style="font-size:12px;color:#8893a8;margin:0;">No categories found.</p>
+                        }
+                    </div>
+                </div>
+
+                <!-- Availability (StockQTY ke hisaab se) -->
                 <div class="shop-filter-section">
                     <h6 class="shop-filter-title">Availability</h6>
-                    <div class="shop-filter-check"><label><input type="checkbox" checked> In Stock</label></div>
-                    <div class="shop-filter-check"><label><input type="checkbox"> Out of Stock</label></div>
+                    <div class="shop-filter-check"><label><input type="checkbox" id="chkInStock" checked> In Stock</label></div>
+                    <div class="shop-filter-check"><label><input type="checkbox" id="chkOutStock"> Out of Stock</label></div>
                 </div>
 
-                <button type="button" class="btn-apply-filter">Apply Filters</button>
+                <button type="button" class="btn-reset-filter" id="resetFilterBtn">Reset</button>
             </div>
         </div>
 
         <div class="shop-filter-backdrop" id="filterBackdrop"></div>
 
         <div class="col-lg-9 col-md-12">
-            <div class="row row-sm row-deck">
+            <div class="row row-sm row-deck" id="productGrid">
                 @if (Model.ProductsList != null && Model.ProductsList.Count() > 0)
                 {
                     foreach (var item in Model.ProductsList)
@@ -484,18 +550,41 @@
                             discPct = Math.Round((mrpVal - priceVal) / mrpVal * 100);
                         }
 
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                        double stockVal = Math.Round(Convert.ToDouble(item.StockQTY));
+
+                        var rawImg = Convert.ToString(item.ImagePath);
+                        var isValidImg = !string.IsNullOrWhiteSpace(rawImg)
+                        && (rawImg.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase)
+                        || rawImg.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase)
+                        || rawImg.EndsWith(".png", StringComparison.OrdinalIgnoreCase)
+                        || rawImg.EndsWith(".webp", StringComparison.OrdinalIgnoreCase)
+                        || rawImg.EndsWith(".gif", StringComparison.OrdinalIgnoreCase));
+
+                        var finalImg = !isValidImg
+                        ? defaultImg
+                        : (rawImg.StartsWith("http", StringComparison.OrdinalIgnoreCase) ? rawImg : imgBase + rawImg);
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 shop-product-item"
+                             data-price="@priceVal"
+                             data-stock="@stockVal"
+                             data-subcat="@item.SubCatId"
+                             data-name="@(Convert.ToString(item.ProductName).ToLower())">
                             <div class="card product-card pb-2">
                                 <div class="product-card-media">
                                     @if (discPct > 0)
                                     {
                                         <span class="product-badge">@discPct% OFF</span>
                                     }
-                                    <img src="@item.ImagePath" class="card-img-top productimg" onerror="this.src='https://zadmin.zoewellness.co.in/images/DefaultProduct.jpg';" alt="Product Picture">
+                                    @if (stockVal <= 0)
+                                    {
+                                        <span class="stock-badge out">Out of Stock</span>
+                                    }
+                                    <img src="@finalImg" class="card-img-top productimg" onerror="this.onerror=null;this.src='@defaultImg';" alt="Product Picture">
                                 </div>
-                                <input type="hidden" id="hndimg_@item.ProdId" value="@item.ImagePath" />
+                                <input type="hidden" id="hndimg_@item.ProdId" value="@finalImg" />
                                 <input type="hidden" id="hndprod_@item.ProdId" value="@item.ProductName" />
-                                <input type="hidden" id="hndAvailstock_@item.ProdId" value="@Math.Round(item.StockQTY)" />
+                                <input type="hidden" id="hndAvailstock_@item.ProdId" value="@stockVal" />
+                                <input type="hidden" id="hndbatch_@item.ProdId" value="@item.BatchNo" />
                                 <div class="card-body">
                                     <h5 class="title"> @item.ProductName </h5>
                                     <div class="price">
@@ -505,7 +594,9 @@
                                     </div>
                                     <div class="product-card-actions">
                                         <input type="number" name="number" onkeyup='QTYChange(@item.StockQTY,@item.ProdId)' id="input_@item.ProdId" class="form-control qty-input" min="1" value="1" required="required">
+
                                         <a href="javascript:void(0);" id="btn_@item.ProdId" onclick='Addtocart(@item.ProdId)' class="btn btn-primary btn-add-cart"> <i class="fa fa-shopping-bag" aria-hidden="true"></i> Add to Cart </a>
+
                                         <button class="btn btn-primary btn-add-cart" id="hidbtn_@item.ProdId" style="display:none;" type="button" disabled>
                                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                         </button>
@@ -516,6 +607,11 @@
                     }
                 }
             </div>
+
+            <div class="no-products-msg" id="noProductsMsg">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                No products match your filters.
+            </div>
         </div>
 
     </div>
@@ -523,6 +619,8 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
+
+        /* ---------- Mobile filter drawer ---------- */
         var filterCard = document.getElementById('shopFilterCard');
         var backdrop = document.getElementById('filterBackdrop');
         var openBtn = document.getElementById('filterToggleBtn');
@@ -532,14 +630,88 @@
             filterCard.classList.add('show');
             backdrop.classList.add('show');
         }
-
         function closeFilter() {
             filterCard.classList.remove('show');
             backdrop.classList.remove('show');
         }
-
         if (openBtn) openBtn.addEventListener('click', openFilter);
         if (closeBtn) closeBtn.addEventListener('click', closeFilter);
         if (backdrop) backdrop.addEventListener('click', closeFilter);
+
+        /* ---------- Product filtering (real data) ---------- */
+        var MAX_PRICE = @maxPriceInt;
+        var priceSlider = document.getElementById('priceRange');
+        var priceLabel = document.getElementById('priceRangeMaxLabel');
+        var searchBox = document.getElementById('productSearch');
+        var inStockChk = document.getElementById('chkInStock');
+        var outStockChk = document.getElementById('chkOutStock');
+        var catChecks = document.querySelectorAll('.cat-filter');   // NEW
+        var items = document.querySelectorAll('.shop-product-item');
+        var noResults = document.getElementById('noProductsMsg');
+
+        function applyFilters() {
+            var maxVal = priceSlider ? parseFloat(priceSlider.value) : MAX_PRICE;
+            var term = searchBox ? searchBox.value.trim().toLowerCase() : '';
+            var wantIn = inStockChk ? inStockChk.checked : true;
+            var wantOut = outStockChk ? outStockChk.checked : false;
+
+            // agar dono unchecked hain to sab dikhao
+            if (!wantIn && !wantOut) { wantIn = true; wantOut = true; }
+
+            // checked categories collect karo
+            var checkedCats = [];
+            catChecks.forEach(function (c) { if (c.checked) checkedCats.push(c.value); });
+
+            var visible = 0;
+            items.forEach(function (el) {
+                var price = parseFloat(el.getAttribute('data-price')) || 0;
+                var stock = parseFloat(el.getAttribute('data-stock')) || 0;
+                var name = el.getAttribute('data-name') || '';
+                var subcat = el.getAttribute('data-subcat') || '';
+
+                var okPrice = price <= maxVal;
+                var isInStock = stock > 0;
+                var okStock = (isInStock && wantIn) || (!isInStock && wantOut);
+                var okName = term === '' || name.indexOf(term) !== -1;
+                // koi category select nahi to sab dikhao, warna sirf matched
+                var okCat = checkedCats.length === 0 || checkedCats.indexOf(subcat) !== -1;
+
+                if (okPrice && okStock && okName && okCat) {
+                    el.style.display = '';
+                    visible++;
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+
+            if (noResults) noResults.style.display = (visible === 0) ? 'block' : 'none';
+        }
+
+        // Live filtering (turant apply)
+        if (priceSlider) {
+            priceSlider.addEventListener('input', function () {
+                if (priceLabel) priceLabel.innerHTML = '&#8377; ' + Math.round(this.value);
+                applyFilters();
+            });
+        }
+        if (searchBox) searchBox.addEventListener('input', applyFilters);
+        if (inStockChk) inStockChk.addEventListener('change', applyFilters);
+        if (outStockChk) outStockChk.addEventListener('change', applyFilters);
+        catChecks.forEach(function (c) { c.addEventListener('change', applyFilters); });   // NEW
+
+        // Reset button (sab filters wapas default)
+        var resetBtn = document.getElementById('resetFilterBtn');
+        if (resetBtn) resetBtn.addEventListener('click', function () {
+            if (searchBox) searchBox.value = '';
+            if (priceSlider) priceSlider.value = MAX_PRICE;
+            if (priceLabel) priceLabel.innerHTML = '&#8377; ' + MAX_PRICE;
+            if (inStockChk) inStockChk.checked = true;
+            if (outStockChk) outStockChk.checked = false;
+            catChecks.forEach(function (c) { c.checked = false; });   // NEW
+            applyFilters();
+        });
+
+        // Page load par ek baar chala do
+        applyFilters();
     });
 </script>

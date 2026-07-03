@@ -76,127 +76,128 @@
 
        
       
-        $("#btnExport").on('click', function () {
-            var UserTypeStr = "SalesReturnReport";
-            var tableString = "";
-            var tableString = "<thead><tr>";
+            $("#btnExport").on('click', function () {
+                debugger;
+                var UserTypeStr = "SalesReturnReport";
+                var tableString = "";
+                var tableString = "<thead><tr>";
 
-            if (reportType == "Invoice") {
-                tableString += "<th>S.No.</th>";
-                tableString += "<th>Bill No.</th>";
-                tableString += "<th>Bill Date</th>";
-                tableString += "<th> Code</th>";
-                tableString += "<th> Name</th>";
-                tableString += "<th>GSTIN</th>";
-                tableString += "<th>State Name</th>";
-                tableString += "<th>Exem. Sale</th>";
-                tableString += "<th>Discount</th>";
+                if (reportType == "Invoice") {
+                    tableString += "<th>S.No.</th>";
+                    tableString += "<th>Bill No.</th>";
+                    tableString += "<th>Bill Date</th>";
+                    tableString += "<th> Code</th>";
+                    tableString += "<th> Name</th>";
+                    tableString += "<th>GSTIN</th>";
+                    tableString += "<th>State Name</th>";
+                    tableString += "<th>Exem. Sale</th>";
+                    tableString += "<th>Discount</th>";
 
-                tableString += "<th>Basic 3%</th>";
-                tableString += "<th>IGST@3%</th>";
-                tableString += "<th>CGST@1.5% </th>";
-                tableString += "<th>SGST@1.5%</th>";
-                tableString += "<th>Basic 5%</th>";
-                tableString += "<th>IGST@5%</th>";
-                tableString += "<th>CGST@2.5% </th>";
-                tableString += "<th>SGST@2.5%</th>";
-                tableString += "<th>Basic 12%</th>";
-                tableString += "<th>IGST@12%</th>";
-                tableString += "<th>CGST@6% </th>";
-                tableString += "<th>SGST@6%</th>";
-                tableString += "<th>Basic 18%</th>";
-                tableString += "<th>IGST@18%</th>";
-                tableString += "<th>CGST@9% </th>";
-                tableString += "<th>SGST@9%</th>";
-                tableString += "<th>Basic 28%</th>";
-                tableString += "<th>IGST@28%</th>";
-                tableString += "<th>CGST@14% </th>";
-                tableString += "<th>SGST@14%</th>";
-                tableString += "<th>Total Amount</th>";
-                tableString += "<th>Total IGST</th>";
-                tableString += "<th>Total CGST</th>";
-                tableString += "<th>Total SGST</th>";
-                tableString += "<th>Round Off</th>";
-                tableString += "<th>Bill Amount</th>";
-                tableString += "</tr></thead><tbody>";
-                for (var i = 0; i < ProductWiseGrid.length; i++) {
-                    tableString += "<tr>";
-                    tableString += "<td>" + ProductWiseGrid[i].SNo + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].BillNo + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].Billdate + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].Code + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].PartyName + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].GSTIN + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].StateName + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].ExemptSale + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].Discount + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].Basic_3 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].IGST_3 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].CGST_15 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].SGST_15 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].Basic_5 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].IGST_5 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].CGST1_25 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].CGST2_25 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].Basic_12 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].IGST_12 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].CGST_6 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].SGST_6 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].Basic_for_18 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].IGST_18 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].CGST_9 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].SGST_9 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].Basic_28 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].IGST_28 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].CGST_14 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].SGST_14 + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].TotalAmt + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].TotalIGST + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].TotalCGST + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].TotalSGST + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].RndOff + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].BillAmount + "</td>";
-                    tableString += "</tr>";
+                    tableString += "<th>Basic 3%</th>";
+                    tableString += "<th>IGST@3%</th>";
+                    tableString += "<th>CGST@1.5% </th>";
+                    tableString += "<th>SGST@1.5%</th>";
+                    tableString += "<th>Basic 5%</th>";
+                    tableString += "<th>IGST@5%</th>";
+                    tableString += "<th>CGST@2.5% </th>";
+                    tableString += "<th>SGST@2.5%</th>";
+                    tableString += "<th>Basic 12%</th>";
+                    tableString += "<th>IGST@12%</th>";
+                    tableString += "<th>CGST@6% </th>";
+                    tableString += "<th>SGST@6%</th>";
+                    tableString += "<th>Basic 18%</th>";
+                    tableString += "<th>IGST@18%</th>";
+                    tableString += "<th>CGST@9% </th>";
+                    tableString += "<th>SGST@9%</th>";
+                    tableString += "<th>Basic 28%</th>";
+                    tableString += "<th>IGST@28%</th>";
+                    tableString += "<th>CGST@14% </th>";
+                    tableString += "<th>SGST@14%</th>";
+                    tableString += "<th>Total Amount</th>";
+                    tableString += "<th>Total IGST</th>";
+                    tableString += "<th>Total CGST</th>";
+                    tableString += "<th>Total SGST</th>";
+                    tableString += "<th>Round Off</th>";
+                    tableString += "<th>Bill Amount</th>";
+                    tableString += "</tr></thead><tbody>";
+                    for (var i = 0; i < ProductWiseGrid.length; i++) {
+                        tableString += "<tr>";
+                        tableString += "<td>" + ProductWiseGrid[i].SNo + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].BillNo + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].Billdate + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].Code + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].PartyName + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].GSTIN + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].StateName + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].ExemptSale + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].Discount + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].Basic_3 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].IGST_3 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].CGST_15 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].SGST_15 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].Basic_5 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].IGST_5 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].CGST1_25 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].CGST2_25 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].Basic_12 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].IGST_12 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].CGST_6 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].SGST_6 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].Basic_for_18 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].IGST_18 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].CGST_9 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].SGST_9 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].Basic_28 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].IGST_28 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].CGST_14 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].SGST_14 + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].TotalAmt + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].TotalIGST + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].TotalCGST + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].TotalSGST + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].RndOff + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].BillAmount + "</td>";
+                        tableString += "</tr>";
+                    }
                 }
-            }
-            else {
-                tableString += "<th>Product Code</th>";
-                tableString += "<th>Product Name</th>";
+                else {
+                    tableString += "<th>Product Code</th>";
+                    tableString += "<th>Product Name</th>";
 
-                tableString += "<th>HSN Code</th>";
-                tableString += "<th>Quantity</th>";
-                tableString += "<th>Tax</th>";
-                tableString += "<th>Exemt Tax</th>";
-                tableString += "<th>Basic Amount</th>";
-                tableString += "<th>Total IGST</th>";
-                tableString += "<th>Total CGST</th>";
-                tableString += "<th>Total SGST</th>";
-                tableString += "<th>Total Amount</th>";
-                tableString += "</tr></thead><tbody>";
-                for (var i = 0; i < ProductWiseGrid.length; i++) {
-                    tableString += "<tr>";
-                    tableString += "<td>" + ProductWiseGrid[i].ProductId + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].ProductName + "</td>";
+                    tableString += "<th>HSN Code</th>";
+                    tableString += "<th>Quantity</th>";
+                    tableString += "<th>Tax</th>";
+                    tableString += "<th>Exemt Tax</th>";
+                    tableString += "<th>Basic Amount</th>";
+                    tableString += "<th>Total IGST</th>";
+                    tableString += "<th>Total CGST</th>";
+                    tableString += "<th>Total SGST</th>";
+                    tableString += "<th>Total Amount</th>";
+                    tableString += "</tr></thead><tbody>";
+                    for (var i = 0; i < ProductWiseGrid.length; i++) {
+                        tableString += "<tr>";
+                        tableString += "<td>" + ProductWiseGrid[i].ProductId + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].ProductName + "</td>";
 
-                    tableString += "<td>" + ProductWiseGrid[i].HSN + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].Qty + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].Tax + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].ExemtTax + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].BasicAmt + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].TotalIGST + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].TotalCGST + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].TotalSGST + "</td>";
-                    tableString += "<td>" + ProductWiseGrid[i].TotalAmount + "</td>";
-                    tableString += "</tr>";
+                        tableString += "<td>" + ProductWiseGrid[i].HSN + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].Qty + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].Tax + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].ExemtTax + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].BasicAmt + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].TotalIGST + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].TotalCGST + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].TotalSGST + "</td>";
+                        tableString += "<td>" + ProductWiseGrid[i].TotalAmount + "</td>";
+                        tableString += "</tr>";
+                    }
                 }
-            }
 
-            tableString += "</tbody>";
+                tableString += "</tbody>";
            
-            $("#gridExport").empty();
-            $("#gridExport").append(tableString);
-            tableToExcel('gridExport', UserTypeStr + "_Export");
-        });
+                $("#gridExport").empty();
+                $("#gridExport").append(tableString);
+                tableToExcel('gridExport', UserTypeStr + "_Export");
+            });
 
         $("#btnShowReport").on('click', function () {
             $(".preloader").show();

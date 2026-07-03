@@ -41,51 +41,79 @@ namespace VitaFlow.Presenation.Controllers
                     {
                         if (userdata.UserName != null)
                         {
-                            if (userdata.ISApprove == "N")
+                            HttpContext.Session.SetString("UserId", Convert.ToString(userdata.UserId));
+                            HttpContext.Session.SetString("UserName", Convert.ToString(userdata.UserName));
+                            HttpContext.Session.SetString("password", Convert.ToString(userdata.Password));
+                            //HttpContext.Session.SetString("Name", Convert.ToString(userdata.Name));
+                            HttpContext.Session.SetString("BranchCode", Convert.ToString(userdata.BranchCode));
+                            HttpContext.Session.SetString("PartyCode", Convert.ToString(userdata.PartyCode));
+                            HttpContext.Session.SetString("PartyName", Convert.ToString(userdata.PartyName));
+                            HttpContext.Session.SetString("FCode", Convert.ToString(userdata.FCode));
+                            HttpContext.Session.SetString("PartyId", Convert.ToString(userdata.PartyId));
+                            HttpContext.Session.SetString("GroupId", Convert.ToString(userdata.GroupId));
+                            HttpContext.Session.SetString("StateCode", Convert.ToString(userdata.StateCode));
+                            HttpContext.Session.SetString("StateName", Convert.ToString(userdata.StateName));
+                            HttpContext.Session.SetString("CityName", Convert.ToString(userdata.CityName));
+                            HttpContext.Session.SetString("ParentPartyCode", Convert.ToString(userdata.ParentPartyCode));
+                            HttpContext.Session.SetString("Address1", Convert.ToString(userdata.Address1));
+                            HttpContext.Session.SetString("PinCode", Convert.ToString(userdata.PinCode));
+                            HttpContext.Session.SetString("MobileNo", Convert.ToString(userdata.MobileNo));
+                            HttpContext.Session.SetString("E_MailAdd", Convert.ToString(userdata.E_MailAdd));
+                            HttpContext.Session.SetString("GroupPrefix", Convert.ToString(userdata.GroupPrefix));
+                            HttpContext.Session.SetString("Status", "OK");
+                            HttpContext.Session.SetString("IsSoldByHo", "false");
+                            HttpContext.Session.SetString("LoginUserType", "shoppe");
+                            if (userdata.GroupId == 0)
                             {
-                                ViewBag.loginerr = "Admin approve pending";
+                                HttpContext.Session.SetString("IsSoldByHo", "true");
                             }
-                            else if (userdata.ISApprove == "N")
-                            {
-                                ViewBag.loginerr = "You are deactivetd";
-                            }
-                            else
-                            {
-                                if (Convert.ToString(userdata.PartyCode) == "WR")
-                                {
-                                    ViewBag.loginerr = "You are not authorize to login this portal.";
-                                    return View(obj);
-                                }
+                            HttpContext.Session.SetComplexData("LoginUser", userdata);
+                            return RedirectToAction("Index", "Home");
+                            //if (userdata.ISApprove == "N")
+                            //{
+                            //    ViewBag.loginerr = "Admin approve pending";
+                            //}
+                            //else if (userdata.ISApprove == "N")
+                            //{
+                            //    ViewBag.loginerr = "You are deactivetd";
+                            //}
+                            //else
+                            //{
+                            //    if (Convert.ToString(userdata.PartyCode) == "WR")
+                            //    {
+                            //        ViewBag.loginerr = "You are not authorize to login this portal.";
+                            //        return View(obj);
+                            //    }
 
-                                HttpContext.Session.SetString("UserId", Convert.ToString(userdata.UserId));
-                                HttpContext.Session.SetString("UserName", Convert.ToString(userdata.UserName));
-                                HttpContext.Session.SetString("password", Convert.ToString(userdata.Password));
-                                //HttpContext.Session.SetString("Name", Convert.ToString(userdata.Name));
-                                HttpContext.Session.SetString("BranchCode", Convert.ToString(userdata.BranchCode));
-                                HttpContext.Session.SetString("PartyCode", Convert.ToString(userdata.PartyCode));
-                                HttpContext.Session.SetString("PartyName", Convert.ToString(userdata.PartyName));
-                                HttpContext.Session.SetString("FCode", Convert.ToString(userdata.FCode));
-                                HttpContext.Session.SetString("PartyId", Convert.ToString(userdata.PartyId));
-                                HttpContext.Session.SetString("GroupId", Convert.ToString(userdata.GroupId));
-                                HttpContext.Session.SetString("StateCode", Convert.ToString(userdata.StateCode));
-                                HttpContext.Session.SetString("StateName", Convert.ToString(userdata.StateName));
-                                HttpContext.Session.SetString("CityName", Convert.ToString(userdata.CityName));
-                                HttpContext.Session.SetString("ParentPartyCode", Convert.ToString(userdata.ParentPartyCode));
-                                HttpContext.Session.SetString("Address1", Convert.ToString(userdata.Address1));
-                                HttpContext.Session.SetString("PinCode", Convert.ToString(userdata.PinCode));
-                                HttpContext.Session.SetString("MobileNo", Convert.ToString(userdata.MobileNo));
-                                HttpContext.Session.SetString("E_MailAdd", Convert.ToString(userdata.E_MailAdd));
-                                HttpContext.Session.SetString("GroupPrefix", Convert.ToString(userdata.GroupPrefix));
-                                HttpContext.Session.SetString("Status", "OK");
-                                HttpContext.Session.SetString("IsSoldByHo", "false");
-                                HttpContext.Session.SetString("LoginUserType", "shoppe");
-                                if (userdata.GroupId == 0)
-                                {
-                                    HttpContext.Session.SetString("IsSoldByHo", "true");
-                                }
-                                HttpContext.Session.SetComplexData("LoginUser", userdata);
-                                return RedirectToAction("Index", "Home");
-                            }
+                            //    HttpContext.Session.SetString("UserId", Convert.ToString(userdata.UserId));
+                            //    HttpContext.Session.SetString("UserName", Convert.ToString(userdata.UserName));
+                            //    HttpContext.Session.SetString("password", Convert.ToString(userdata.Password));
+                            //    //HttpContext.Session.SetString("Name", Convert.ToString(userdata.Name));
+                            //    HttpContext.Session.SetString("BranchCode", Convert.ToString(userdata.BranchCode));
+                            //    HttpContext.Session.SetString("PartyCode", Convert.ToString(userdata.PartyCode));
+                            //    HttpContext.Session.SetString("PartyName", Convert.ToString(userdata.PartyName));
+                            //    HttpContext.Session.SetString("FCode", Convert.ToString(userdata.FCode));
+                            //    HttpContext.Session.SetString("PartyId", Convert.ToString(userdata.PartyId));
+                            //    HttpContext.Session.SetString("GroupId", Convert.ToString(userdata.GroupId));
+                            //    HttpContext.Session.SetString("StateCode", Convert.ToString(userdata.StateCode));
+                            //    HttpContext.Session.SetString("StateName", Convert.ToString(userdata.StateName));
+                            //    HttpContext.Session.SetString("CityName", Convert.ToString(userdata.CityName));
+                            //    HttpContext.Session.SetString("ParentPartyCode", Convert.ToString(userdata.ParentPartyCode));
+                            //    HttpContext.Session.SetString("Address1", Convert.ToString(userdata.Address1));
+                            //    HttpContext.Session.SetString("PinCode", Convert.ToString(userdata.PinCode));
+                            //    HttpContext.Session.SetString("MobileNo", Convert.ToString(userdata.MobileNo));
+                            //    HttpContext.Session.SetString("E_MailAdd", Convert.ToString(userdata.E_MailAdd));
+                            //    HttpContext.Session.SetString("GroupPrefix", Convert.ToString(userdata.GroupPrefix));
+                            //    HttpContext.Session.SetString("Status", "OK");
+                            //    HttpContext.Session.SetString("IsSoldByHo", "false");
+                            //    HttpContext.Session.SetString("LoginUserType", "shoppe");
+                            //    if (userdata.GroupId == 0)
+                            //    {
+                            //        HttpContext.Session.SetString("IsSoldByHo", "true");
+                            //    }
+                            //    HttpContext.Session.SetComplexData("LoginUser", userdata);
+                            //    return RedirectToAction("Index", "Home");
+                            //}
 
                         }
                         else

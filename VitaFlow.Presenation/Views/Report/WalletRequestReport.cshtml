@@ -111,14 +111,15 @@
             tableString += "<th>ReqNo</th>";
             tableString += "<th>Amount</th>";
             tableString += "<th>ReqDate</th>";
-            tableString += "<th>>ChqDate</th>";
+            tableString += "<th>ChqDate</th>";
             tableString += "<th>ReqBy Name</th>";
             tableString += "<th>Pay mode</th>";
             tableString += "<th>Bank Name</th>";
             tableString += "<th>Remarks</th>";
-            tableString += "<th>>Approve Date</th>";
+            tableString += "<th>Approve Date</th>";
             tableString += "<td>Status</td>";
             tableString += "<th>Approve Remark</th>";
+            tableString += "<th>Wallet Types</th>";
             tableString += "</tr></thead><tbody>";
             for (var i = 0; i < WalletGrid.length; i++) {
                 tableString += "<tr>";
@@ -134,6 +135,7 @@
                 tableString += "<td>" + WalletGrid[i].ApproveDate + "</td>";
                 tableString += "<td>" + WalletGrid[i].IsApproved + "</td>";
                 tableString += "<td>" + WalletGrid[i].ApproveRemark + "</td>";
+                tableString += "<td>" + WalletGrid[i].WalletTypes + "</td>";
                 tableString += "</tr>";
             }
 
@@ -145,11 +147,13 @@
 
 
         function GetAllWalletRequest() {
+            debugger;
             $(".preloader").show();
             $("#PartyCode").val('@CurrentPartyCode');
             var PartyCode = $("#PartyCode").val();
             var DateType = $("#DateType").val();
             var FromDate = $("#StartDate").val();
+             var ToDate = $("#EndDate").val();
             // if ($("#StartDate").val() = "") {
             //     FromDate = "all";
             // }
@@ -199,7 +203,7 @@
                             "ReqDateStr": objResult[i].reqDateStr, "ReqBy": objResult[i].reqBy, "ReqByName": objResult[i].reqBy + ' - ' + objResult[i].reqByName,
                             "Paymode": objResult[i].paymode, "ChqNo": objResult[i].chqNo, "ApproveDate": objResult[i].approveDateStr, "ChqDate": objResult[i].chqDateStr,
                                 "BranchName": objResult[i].branchName, "BankName": objResult[i].bankName, "ReqNo": objResult[i].reqNo, "ReqDate": objResult[i].reqDateStr,
-                                "Remarks": objResult[i].remarks, "ScannedFileName": productPicFileName, "Amount": objResult[i].amount, "Reject": Rej,"VType": objResult[i].vType
+                                "Remarks": objResult[i].remarks, "ScannedFileName": productPicFileName, "Amount": objResult[i].amount, "Reject": Rej,"VType": objResult[i].vType,"Reject": Rej, "WalletTypes": objResult[i].walletTypes
                             });
                         }
                         if (WalletGrid[0].SNo == null || WalletGrid[0].SNo == "") {
@@ -290,12 +294,14 @@
                     { field: 'BankName', title: 'Bank Name', width: 50, sortable: true, hidden: false, filterable: true },
                     { field: 'BranchName', title: 'Branch Name', width: 50, sortable: true, hidden: true, filterable: true },
                     { field: 'Remarks', title: 'Remarks', width: 80, sortable: true, hidden: false, filterable: false },
+
                     { title: 'File', width: 70, tmpl: '<a target="_blank" style="text-decoration:underline;" href={ScannedFileName} rel="group" class="fbox"><img src= {ScannedFileName} style="height:50px;" /> </a>', align: 'center', filterable: false },
                     { field: 'ApproveDate', title: 'Approve Date', width: 65, sortable: true, hidden: false, filterable: false },
                     { field: 'IsApproved', title: 'Approved', width: 60, sortable: true, hidden: false, filterable: true },
                     { field: 'ApproveRemark', title: 'Approve Remark', width: 90, hidden: false, filterable: true },
                     // { field: 'VType', title: 'Wallet Type', width: 90, hidden: false, filterable: true },
                     { field: 'Reject', width: 100, title: 'Reject', sortable: true, hidden: true, filterable: false, tmpl: '<a style="text-decoration:underline;color:blue">{Reject}</a>', events: { 'click': RejectWalletReq }, align: 'center' },
+                      { field: 'WalletTypes', title: 'Wallet Type', width: 101, sortable: true, hidden: false, filterable: true },
 
                 ],
 
@@ -409,12 +415,15 @@
                     Wallet Report
                 </h4>
             </div>
+            <br />
             <div class="card-body pt-0 bg-white">
                 <div class="row">
+                    
                     @Html.HiddenFor(m => m.GridString, new { id = "GridString", name = "GridString" })
                     @Html.HiddenFor(m => m.ReqBy, new { id = "PartyCode", name = "PartyCode" })
                     <div class="col-md-3">
                     <div class="form-group">
+                            <label>Status</label>
                         @Html.DropDownList("DateType", new SelectList(new List<SelectListItem> {
                         new SelectListItem {Text="Req.Date",Value="R" },
                         new SelectListItem { Text="Approve/Reject Date",Value="A"} }, "Value", "Text"), new { @class = "form-control", @id = "DateType" })
@@ -432,7 +441,7 @@
                             <input type="text" asp-for="EndDate" id="EndDate" class="form-control">
                         </div>
                     </div>
-                    <div class="col-md-1" id="IsProductDiv">
+                    <div class="col-md-1" id="IsProductDiv"style="display:none">
                         <div class="form-group mt-4">
                             <input type="checkbox" id="IsDateFilter" name="IsDateFilter" class="flat" />
                         </div>

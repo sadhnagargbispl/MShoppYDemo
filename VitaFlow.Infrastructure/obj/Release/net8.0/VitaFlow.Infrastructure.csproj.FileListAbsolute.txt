@@ -52,3 +52,21 @@ E:\Sadhna Garg\GithhubFranchise\VitaFlow_Shopping\VitaFlow.Infrastructure\obj\Re
 E:\Sadhna Garg\GithhubFranchise\VitaFlow_Shopping\VitaFlow.Infrastructure\obj\Release\net8.0\VitaFlow.Infrastructure.pdb
 E:\Sadhna Garg\GithhubFranchise\VitaFlow_Shopping\VitaFlow.Infrastructure\obj\Release\net8.0\VitaFlow.Infrastructure.genruntimeconfig.cache
 E:\Sadhna Garg\GithhubFranchise\VitaFlow_Shopping\VitaFlow.Infrastructure\obj\Release\net8.0\ref\VitaFlow.Infrastructure.dll
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\bin\Release\net8.0\VitaFlow.Infrastructure.deps.json
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\bin\Release\net8.0\VitaFlow.Infrastructure.runtimeconfig.json
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\bin\Release\net8.0\VitaFlow.Infrastructure.dll
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\bin\Release\net8.0\VitaFlow.Infrastructure.pdb
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\bin\Release\net8.0\VitaFlow.Domain.dll
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\bin\Release\net8.0\VitaFlow.Domain.pdb
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\obj\Release\net8.0\VitaFlow.Infrastructure.csproj.AssemblyReference.cache
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\obj\Release\net8.0\VitaFlow.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\obj\Release\net8.0\VitaFlow.Infrastructure.AssemblyInfoInputs.cache
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\obj\Release\net8.0\VitaFlow.Infrastructure.AssemblyInfo.cs
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\obj\Release\net8.0\VitaFlow.Infrastructure.csproj.CoreCompileInputs.cache
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\obj\Release\net8.0\VitaFlow.Infrastructure.sourcelink.json
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\obj\Release\net8.0\VitaFlow.BAFCB139.Up2Date
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\obj\Release\net8.0\VitaFlow.Infrastructure.dll
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\obj\Release\net8.0\refint\VitaFlow.Infrastructure.dll
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\obj\Release\net8.0\VitaFlow.Infrastructure.pdb
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\obj\Release\net8.0\VitaFlow.Infrastructure.genruntimeconfig.cache
+F:\Demo_GitHub\MShoppYDemo\VitaFlow.Infrastructure\obj\Release\net8.0\ref\VitaFlow.Infrastructure.dll

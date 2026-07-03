@@ -8,7 +8,7 @@
     <meta name="Description" content="VITAFLOW HEALTHCARE PVT. LTD.">
     <meta name="Author" content="VITAFLOW HEALTHCARE PVT. LTD.">
     <meta name="Keywords" content="VITAFLOW HEALTHCARE PVT. LTD.">
-    <title>@ViewData["Title"] - VitaFlow</title>
+    <title>@ViewData["Title"]</title>
     <!-- Favicon -->
     <link rel="icon" href="~/assets/img/brand/favicon.png" type="image/x-icon">
 
@@ -187,6 +187,25 @@
 
         });
     </script>
+    <style>
+        /* Desktop wala bada logo */
+        .main-logo {
+            max-width: 160px;
+            max-height: 50px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Mobile / collapsed wala chhota icon logo */
+        .logo-icon {
+            max-width: 40px;
+            max-height: 40px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+    </style>
 </head>
 <body class="main-body app sidebar-mini">
 
@@ -197,10 +216,24 @@
         <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
         <aside class="app-sidebar sidebar-scroll">
             <div class="main-sidebar-header active">
-                <a class="desktop-logo logo-light active" href="~/Home/index"><img src="~/assets/img/logo.png" class="main-logo" alt="logo"></a>
-                <a class="desktop-logo logo-dark active" href="~/Home/index"><img src="~/assets/img/logo.png" class="main-logo dark-theme" alt="logo"></a>
-                <a class="logo-icon mobile-logo icon-light active" href="~/Home/index"><img src="~/assets/img/logo.png" class="logo-icon" alt="logo"></a>
-                <a class="logo-icon mobile-logo icon-dark active" href="~/Home/index"><img src="~/assets/img/logo.png" class="logo-icon dark-theme" alt="logo"></a>
+                <a class="desktop-logo logo-light active" href="~/Home/index">
+                    <img src="~/assets/img/logo (1).png" class="main-logo" alt="logo">
+                </a>
+                <a class="desktop-logo logo-dark active" href="~/Home/index">
+                    <img src="~/assets/img/logo (1).png" class="main-logo dark-theme" alt="logo">
+                </a>
+                <a class="logo-icon mobile-logo icon-light active" href="~/Home/index">
+                    <img src="~/assets/img/logo (1).png" class="logo-icon" alt="logo">
+                </a>
+                <a class="logo-icon mobile-logo icon-dark active" href="~/Home/index">
+                    <img src="~/assets/img/logo (1).png" class="logo-icon dark-theme" alt="logo">
+                </a>
+
+
+             @*    <a class="desktop-logo logo-light active" href="~/Home/index"><img src="~/assets/img/logo (1).png" class="main-logo" alt="logo"></a>
+                <a class="desktop-logo logo-dark active" href="~/Home/index"><img src="~/assets/img/logo (1).png" class="main-logo dark-theme" alt="logo"></a>
+                <a class="logo-icon mobile-logo icon-light active" href="~/Home/index"><img src="~/assets/img/logo (1).png" class="logo-icon" alt="logo"></a>
+                <a class="logo-icon mobile-logo icon-dark active" href="~/Home/index"><img src="~/assets/img/logo (1).png" class="logo-icon dark-theme" alt="logo"></a> *@
             </div>
             <div class="main-sidemenu">
                 <ul class="side-menu">
@@ -910,7 +943,7 @@
     <!-- Footer Start -->
     <div class="main-footer ht-40">
         <div class="container-fluid pd-t-0-f ht-100p">
-            <span>Copyright © @DateTime.Now.Year <a href="~/Home/Index"> Vitaflow Healthcare Pvt. Ltd. </a> All rights reserved.</span>
+            <span>Copyright © @DateTime.Now.Year <a href="~/Home/Index"> DARJUV9 Pvt. Ltd. </a> All rights reserved.</span>
         </div>
     </div>
     <!-- Footer End -->

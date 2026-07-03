@@ -37,7 +37,7 @@ namespace VitaFlow.Infrastructure.Repository
             {
                 using (var connection = _context.CreateLiveconnInv())
                 {
-                    var storedProcedureName = "GetProducts";
+                    var storedProcedureName = "GetProducts_Update";
                     var values = new { @FCode = FCode };
                     obj = (await connection.QueryAsync<Product>(storedProcedureName, values, commandType: CommandType.StoredProcedure)).ToList();
                 }
@@ -70,7 +70,10 @@ namespace VitaFlow.Infrastructure.Repository
                         @userId = req.userid,
                         @Weight = req.Weight,
                         @PV = req.PV,
-                        @FCode = req.FCode
+                        @FCode = req.FCode,
+                        @BatchNo = req.BatchNo
+
+
                     };
                     Str = (await connection.QueryAsync<string>(storedProcedureName, values, commandType: CommandType.StoredProcedure)).FirstOrDefault();
                 }
@@ -798,6 +801,28 @@ namespace VitaFlow.Infrastructure.Repository
             }
             return obj;
         }
+        public async Task<List<M_SubCatMaster>> GetSubCategories()
+        {
+            List<M_SubCatMaster> list = new List<M_SubCatMaster>();
+            try
+            {
+                using (var connection = _context.CreateLiveconnInv())
+                {
+                    var storedProcedureName = "Sp_GetSubCategories";
+                    var res = await connection.QueryAsync<M_SubCatMaster>(
+                        storedProcedureName,
+                        commandType: CommandType.StoredProcedure);
 
+                    if (res != null)
+                    {
+                        list = res.ToList();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return list;
+        }
     }
 }
