@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Application\\VitaFlow.Application.csproj": {}
+    "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Application\\VitaFlow.Application.csproj": {}
   },
   "projects": {
-    "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Application\\VitaFlow.Application.csproj": {
+    "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Application\\VitaFlow.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Application\\VitaFlow.Application.csproj",
+        "projectUniqueName": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Application\\VitaFlow.Application.csproj",
         "projectName": "VitaFlow.Application",
-        "projectPath": "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Application\\VitaFlow.Application.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Application\\obj\\",
+        "projectPath": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Application\\VitaFlow.Application.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,19 +26,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
-            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj": {
-                "projectPath": "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj"
+              "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj": {
+                "projectPath": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj"
               },
-              "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj": {
-                "projectPath": "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj"
+              "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj": {
+                "projectPath": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj"
               }
             }
           }
@@ -53,11 +51,10 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
-          "framework": "net8.0",
           "targetAlias": "net8.0",
           "imports": [
             "net461",
@@ -75,24 +72,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj": {
+    "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj",
+        "projectUniqueName": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj",
         "projectName": "VitaFlow.Domain",
-        "projectPath": "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Domain\\obj\\",
+        "projectPath": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -101,12 +98,10 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
-            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {}
           }
@@ -121,11 +116,10 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
-          "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.Http.Features": {
@@ -149,24 +143,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj": {
+    "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj",
+        "projectUniqueName": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj",
         "projectName": "VitaFlow.Infrastructure",
-        "projectPath": "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-        "outputPath": "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Infrastructure\\obj\\",
+        "projectPath": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+        "outputPath": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -175,16 +169,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
-            "framework": "net8.0",
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj": {
-                "projectPath": "E:\\Sadhna Garg\\Demo_Github\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj"
+              "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj": {
+                "projectPath": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Domain\\VitaFlow.Domain.csproj"
               }
             }
           }
@@ -199,11 +191,10 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
-          "framework": "net8.0",
           "targetAlias": "net8.0",
           "dependencies": {
             "Dapper": {
@@ -251,7 +242,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.314/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

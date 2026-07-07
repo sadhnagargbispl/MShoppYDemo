@@ -132,8 +132,7 @@
                         <select name="ParentPartyCode" asp-for="ParentPartyCode" class="registratoninput" id="ParentPartyCode" autocomplete="off">
                             <option>Parent Party</option>
                         </select>
-                        @*  <input class="registratoninput" id="PartyCode" asp-for="PartyCode" style="text-transform:uppercase;" type="text" name="PartyCode" placeholder="Parent Party Code" autocomplete="off" />
-                        <span class="focus-input100"></span> *@
+                     
                         <span asp-validation-for="PartyCode" class="text-danger"></span>
                         <span style="color:red;">@ViewBag.partyerr</span>
                     </div>
@@ -210,39 +209,75 @@
                 return false;
             }
             return true;
-        }
-        function GetPincodeDetail() {
+                }function GetPincodeDetail() {
             debugger;
+
             var PartyGroup = $("#PartyGroup").val();
+
             if (PartyGroup == "0") {
                 alert("Please select franchise package");
-                e.preventDefault();
                 $("#uploadButton").show();
                 $("#hidbtn").hide();
                 return false;
             }
-            var count = $("#pincode").val().length;
+
             var Pincode = $("#pincode").val();
-            if (count >= 6) {
+
+            if (Pincode.length >= 6) {
+
                 $.ajax({
                     url: '/Account/GetPincodeDetail',
-                    dataType: 'JSON',
-                    method: 'GET',
-                    data: { 'Pincode': Pincode },
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { Pincode: Pincode },
+
                     success: function (data) {
+
                         if (data.code == "200") {
+
+                            // City Fill
                             $("#City").val(data.district);
-                            $("#registraton option").filter(function () {
-                                return $(this).text().toUpperCase() === data.state.toUpperCase();
-                            }).prop('selected', true);
+
+                            // City Readonly (Disable Like State)
+                            $("#City").prop("readonly", true);
+
+                            // State Select
+                            $("#registraton option").each(function () {
+                                if ($(this).text().trim().toUpperCase() == data.state.trim().toUpperCase()) {
+                                    $(this).prop("selected", true);
+                                }
+                            });
+
+                            // State Disable
+                            $("#registraton").prop("disabled", true);
+
+                            // Parent List
                             var SelectedVal = $("#PartyGroup").val();
                             GetParentPartyList(SelectedVal);
+
+                        } else {
+
+                            $("#City").val("");
+                            $("#City").prop("readonly", false);
+                            $("#registraton").prop("disabled", false);
                         }
                     },
-                    error: function (error) {
+
+                    error: function (xhr, status, error) {
+
                         console.log(error);
+
+                        $("#City").val("");
+                        $("#City").prop("readonly", false);
+                        $("#registraton").prop("disabled", false);
                     }
                 });
+
+            } else {
+
+                $("#City").val("");
+                $("#City").prop("readonly", false);
+                $("#registraton").prop("disabled", false);
             }
         }
         $(document).ready(function () {

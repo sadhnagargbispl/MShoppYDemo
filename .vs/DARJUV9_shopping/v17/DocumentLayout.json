@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "F:\\Demo_GitHub\\MShoppYDemo\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|f:\\demo_github\\mshoppydemo\\vitaflow.presenation\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|solutionrelative:vitaflow.presenation\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|f:\\demo_github\\mshoppydemo\\vitaflow.presenation\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|solutionrelative:vitaflow.presenation\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|f:\\demo_github\\mshoppydemo\\vitaflow.presenation\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|solutionrelative:vitaflow.presenation\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{114A9262-F705-4470-B937-2255C84C0A9A}|VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj|f:\\demo_github\\mshoppydemo\\vitaflow.infrastructure\\repository\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{114A9262-F705-4470-B937-2255C84C0A9A}|VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj|solutionrelative:vitaflow.infrastructure\\repository\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|f:\\demo_github\\mshoppydemo\\vitaflow.presenation\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|solutionrelative:vitaflow.presenation\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|f:\\demo_github\\mshoppydemo\\vitaflow.presenation\\views\\account\\registration.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|solutionrelative:vitaflow.presenation\\views\\account\\registration.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{114A9262-F705-4470-B937-2255C84C0A9A}|VitaFlow.Infrastructure\\VitaFlow.Infrastructure.csproj|f:\\demo_github\\mshoppydemo\\vitaflow.infrastructure\\repository\\loginrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,16 +23,8 @@
       "RelativeMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|solutionrelative:vitaflow.presenation\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|f:\\demo_github\\mshoppydemo\\vitaflow.presenation\\views\\transaction\\distributorbill.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|solutionrelative:vitaflow.presenation\\views\\transaction\\distributorbill.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7399E33E-7867-42D8-94D6-DBFB259514BB}|VitaFlow.Domain\\VitaFlow.Domain.csproj|f:\\demo_github\\mshoppydemo\\vitaflow.domain\\interface\\i_transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7399E33E-7867-42D8-94D6-DBFB259514BB}|VitaFlow.Domain\\VitaFlow.Domain.csproj|solutionrelative:vitaflow.domain\\interface\\i_transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|f:\\demo_github\\mshoppydemo\\vitaflow.presenation\\views\\transaction\\partybill.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|solutionrelative:vitaflow.presenation\\views\\transaction\\partybill.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|f:\\demo_github\\mshoppydemo\\vitaflow.presenation\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{76A70346-593F-452A-B398-A2F4D7A9C872}|VitaFlow.Presenation\\VitaFlow.Presenation.csproj|solutionrelative:vitaflow.presenation\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,123 +34,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "VitaFlow.Presenation\\Controllers\\HomeController.cs",
-              "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "VitaFlow.Presenation\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-03T12:23:18.567Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "AccountController.cs",
               "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "VitaFlow.Presenation\\Controllers\\AccountController.cs",
               "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Controllers\\AccountController.cs",
               "RelativeToolTip": "VitaFlow.Presenation\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAxwCYAAAA7AAAAAAAAAA==",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAYwJwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-03T11:13:19.477Z",
+              "WhenOpened": "2026-07-07T06:23:03.069Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "I_Transaction.cs",
-              "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Domain\\Interface\\I_Transaction.cs",
-              "RelativeDocumentMoniker": "VitaFlow.Domain\\Interface\\I_Transaction.cs",
-              "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Domain\\Interface\\I_Transaction.cs",
-              "RelativeToolTip": "VitaFlow.Domain\\Interface\\I_Transaction.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAYwBEAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-03T11:11:49.855Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DistributorBill.cshtml",
-              "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Views\\Transaction\\DistributorBill.cshtml",
-              "RelativeDocumentMoniker": "VitaFlow.Presenation\\Views\\Transaction\\DistributorBill.cshtml",
-              "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Views\\Transaction\\DistributorBill.cshtml",
-              "RelativeToolTip": "VitaFlow.Presenation\\Views\\Transaction\\DistributorBill.cshtml",
-              "ViewState": "AgIAAFwJAAAAAAAAAAAswMwJAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-03T10:37:34.48Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LoginRepository.cs",
-              "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Infrastructure\\Repository\\LoginRepository.cs",
-              "RelativeDocumentMoniker": "VitaFlow.Infrastructure\\Repository\\LoginRepository.cs",
-              "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Infrastructure\\Repository\\LoginRepository.cs",
-              "RelativeToolTip": "VitaFlow.Infrastructure\\Repository\\LoginRepository.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwDAAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-03T10:14:03.154Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "ProductController.cs",
               "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "VitaFlow.Presenation\\Controllers\\ProductController.cs",
               "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Controllers\\ProductController.cs",
               "RelativeToolTip": "VitaFlow.Presenation\\Controllers\\ProductController.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAwBQAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-03T10:14:03.163Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TransactionRepository.cs",
-              "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Infrastructure\\Repository\\TransactionRepository.cs",
-              "RelativeDocumentMoniker": "VitaFlow.Infrastructure\\Repository\\TransactionRepository.cs",
-              "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Infrastructure\\Repository\\TransactionRepository.cs",
-              "RelativeToolTip": "VitaFlow.Infrastructure\\Repository\\TransactionRepository.cs",
-              "ViewState": "AgIAAJ8CAAAAAAAAAAAkwLgCAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-03T08:29:07.506Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PartyBill.cshtml",
-              "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Views\\Transaction\\PartyBill.cshtml",
-              "RelativeDocumentMoniker": "VitaFlow.Presenation\\Views\\Transaction\\PartyBill.cshtml",
-              "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Views\\Transaction\\PartyBill.cshtml",
-              "RelativeToolTip": "VitaFlow.Presenation\\Views\\Transaction\\PartyBill.cshtml",
-              "ViewState": "AgIAADwGAAAAAAAAAAAswFIGAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-03T07:46:37.189Z",
+              "WhenOpened": "2026-07-07T06:26:05.802Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TransactionController.cs",
-              "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Controllers\\TransactionController.cs",
-              "RelativeDocumentMoniker": "VitaFlow.Presenation\\Controllers\\TransactionController.cs",
-              "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Controllers\\TransactionController.cs",
-              "RelativeToolTip": "VitaFlow.Presenation\\Controllers\\TransactionController.cs",
-              "ViewState": "AgIAAAMEAAAAAAAAAAAYwBYEAAA3AAAAAAAAAA==",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "VitaFlow.Presenation\\Controllers\\HomeController.cs",
+              "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "VitaFlow.Presenation\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswBYAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-03T07:44:34.394Z",
+              "WhenOpened": "2026-07-07T06:26:05.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Registration.cshtml",
+              "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Views\\Account\\Registration.cshtml",
+              "RelativeDocumentMoniker": "VitaFlow.Presenation\\Views\\Account\\Registration.cshtml",
+              "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Views\\Account\\Registration.cshtml",
+              "RelativeToolTip": "VitaFlow.Presenation\\Views\\Account\\Registration.cshtml",
+              "ViewState": "AgIAAO4AAAAAAAAAAAAmwAMBAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-07T06:22:46.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginRepository.cs",
+              "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Infrastructure\\Repository\\LoginRepository.cs",
+              "RelativeDocumentMoniker": "VitaFlow.Infrastructure\\Repository\\LoginRepository.cs",
+              "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Infrastructure\\Repository\\LoginRepository.cs",
+              "RelativeToolTip": "VitaFlow.Infrastructure\\Repository\\LoginRepository.cs",
+              "ViewState": "AgIAAD0BAAAAAAAAAAAkwFIBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-07T06:13:53.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "VitaFlow.Presenation\\Views\\Home\\Index.cshtml",
+              "ToolTip": "F:\\Demo_GitHub\\MShoppYDemo\\VitaFlow.Presenation\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "VitaFlow.Presenation\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAALMAAAAAAAAAAAAmwOoAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-07T05:31:49.89Z",
               "EditorCaption": ""
             }
           ]
