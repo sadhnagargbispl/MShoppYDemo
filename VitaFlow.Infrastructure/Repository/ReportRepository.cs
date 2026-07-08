@@ -69,6 +69,32 @@ namespace VitaFlow.Infrastructure.Repository
             }
             return obj;
         }
+        public async Task<List<clientProduct>> GetTopClientsProduct(string Action, string Fcode)
+        {
+            List<clientProduct> obj = new List<clientProduct>();
+            try
+            {
+                using (var connection = _context.CreateLiveconnInv())
+                {
+                    var storedProcedureName = "Sp_GetTopclientsProduct";
+                    var values = new
+                    {
+                        @Action = Action,
+                        @FCode = Fcode
+                    };
+                    var res = (await connection.QueryAsync<clientProduct>(storedProcedureName, values, commandType: CommandType.StoredProcedure)).ToList();
+                    if (res != null)
+                    {
+                        obj = res;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return obj;
+        }
         public async Task<List<Product>> GetTopSellingProduct(string Action, string Fcode)
         {
             List<Product> obj = new List<Product>();

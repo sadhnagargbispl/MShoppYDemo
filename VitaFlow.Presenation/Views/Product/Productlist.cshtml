@@ -47,7 +47,8 @@
             return false;
         }
         if (parseInt(Qty) > parseInt(availqty)) {
-            var msg = 'Please enter a number less than or equal to ' + availqty;
+            // var msg = 'Please enter a number less than or equal to ' + availqty;
+             var msg = 'Product is Out of Stock.';
             toastr.error(msg, 'Error', { closeButton: true, progressBar: true, positionClass: 'toast-top-right', timeOut: 5000, extendedTimeOut: 1000 });
             return false;
         }
@@ -527,7 +528,7 @@
                 <div class="shop-filter-section">
                     <h6 class="shop-filter-title">Availability</h6>
                     <div class="shop-filter-check"><label><input type="checkbox" id="chkInStock" checked> In Stock</label></div>
-                    <div class="shop-filter-check"><label><input type="checkbox" id="chkOutStock"> Out of Stock</label></div>
+                    <div class="shop-filter-check"><label><input type="checkbox" id="chkOutStock" checked> Out of Stock</label></div>
                 </div>
 
                 <button type="button" class="btn-reset-filter" id="resetFilterBtn">Reset</button>

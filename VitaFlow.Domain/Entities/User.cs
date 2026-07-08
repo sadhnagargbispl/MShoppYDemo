@@ -39,6 +39,7 @@ namespace VitaFlow.Domain.Entities
         public FranchiseLimit franchiseLimit { get; set; }
 		public List<Product> TopsellingProduct { get; set; }
         public List<Product> StockProduct { get; set; }
+        public List<clientProduct> TopclientProduct { get; set; }
     }
     public class FranchiseLimit
     {
@@ -48,4 +49,5 @@ namespace VitaFlow.Domain.Entities
         public decimal BVBalance { get; set; }
 
     }
+  
 }

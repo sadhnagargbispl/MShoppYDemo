@@ -27,7 +27,7 @@ namespace VitaFlow.Presenation.Controllers
                 obj.franchiseLimit = await iReport.GetFranchiseLimit(HttpContext.Session.GetString("FCode"), Convert.ToInt32(HttpContext.Session.GetString("UserId")));
                 obj.TopsellingProduct = await iReport.GetTopSellingProduct("Top10", HttpContext.Session.GetString("FCode"));
                 obj.StockProduct = await iReport.StockProducts(HttpContext.Session.GetString("FCode"));
-
+               // obj.TopclientProduct = await iReport.GetTopClientsProduct("Top10", HttpContext.Session.GetString("FCode"));
                 // Pull product images from the SAME source Productlist uses, mapped by product name (display only)
                 try
                 {

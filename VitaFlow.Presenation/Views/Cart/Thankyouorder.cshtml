@@ -313,7 +313,7 @@
                     @foreach (var item in Model.OrderConfirmation)
                     {
                         <div class="thankyou-order-item">
-                            <img src="https://d9franchise.bisplindia.in/ProductImages/@item.ImagePath" alt="@item.ProductName"
+                            <img src="@item.ImagePath" alt="@item.ProductName"
                                  onerror="this.onerror=null;this.src='/assets/img/no-image.png';">
                             <div class="thankyou-order-item-info">
                                 <h6>@item.ProductName</h6>

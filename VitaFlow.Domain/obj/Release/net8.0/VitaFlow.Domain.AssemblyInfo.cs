@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VitaFlow.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f1873bb5068c94f40d5454b9cc1e38e44447f4a5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9690d2362ca96311e8f5d8e615aef07420884582")]
 [assembly: System.Reflection.AssemblyProductAttribute("VitaFlow.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VitaFlow.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

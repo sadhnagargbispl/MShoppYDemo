@@ -43,4 +43,9 @@ namespace VitaFlow.Domain.Entities
         public string SubCatName { get; set; }
         public string ActiveStatus { get; set; }
     }
+    public class clientProduct
+    {
+        public string PartyCode { get; set; }
+        public string PartyName { get; set; }
+    }
 }
