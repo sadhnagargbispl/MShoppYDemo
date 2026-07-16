@@ -131,6 +131,21 @@
             });
             return false;
         }
+
+        // NEW: agar koi CHECKED item out of stock hai to checkout rok do aur message dikhao.
+        var oosItems = [];
+        $('.vf-item-check:checked').each(function () {
+            if ($(this).attr('data-oos') === '1') {
+                oosItems.push($(this).attr('data-name') || 'A product');
+            }
+        });
+        if (oosItems.length > 0) {
+            toastr.error('Out of stock: ' + oosItems.join(', ') + '. Please remove or uncheck to continue.', 'Error', {
+                closeButton: true, progressBar: true, positionClass: 'toast-top-right', timeOut: 6000, extendedTimeOut: 1500
+            });
+            return false;
+        }
+
         var unchecked = [];
         $('.vf-item-check').each(function () {
             if (!$(this).is(':checked')) {
@@ -264,6 +279,28 @@
         .premium-cart-page .cart-item:hover {
             background: #f9fbff;
         }
+
+        /* NEW: out-of-stock cart row highlight */
+        .premium-cart-page .cart-item.vf-oos {
+            background: #fff7f7;
+        }
+
+            .premium-cart-page .cart-item.vf-oos:hover {
+                background: #fff1f1;
+            }
+
+    /* NEW: out-of-stock badge */
+    .premium-cart-page .vf-oos-badge {
+        display: inline-block;
+        margin-left: 8px;
+        font-size: 10.5px;
+        font-weight: 700;
+        color: #d64545;
+        background: #ffe3e3;
+        padding: 2px 9px;
+        border-radius: 20px;
+        vertical-align: middle;
+    }
 
     .premium-cart-page .cart-item-check input {
         width: 18px;
@@ -564,17 +601,35 @@
                 {
                     foreach (var item in Model.CartList)
                     {
-                        <div class="cart-item">
+                        // NEW: out-of-stock detection (server se aayi AvailStock aur qty ke aadhaar par)
+                        double availStk = 0;
+                        double.TryParse(Convert.ToString(item.AvailStock), out availStk);
+                        double curQty = 0;
+                        double.TryParse(Convert.ToString(item.qty), out curQty);
+                        bool isOOS = (availStk <= 0) || (curQty > availStk);
+
+                        <div class="cart-item @(isOOS ? "vf-oos" : "")">
                             <div class="cart-item-check">
                                 <div class="form-check">
-                                    <input class="form-check-input vf-item-check" type="checkbox" checked data-cid="@item.id" data-amount="@(item.qty* item.Price)" onchange="vfRecalcCart()">
+                                    <input class="form-check-input vf-item-check" type="checkbox" checked
+                                           data-cid="@item.id"
+                                           data-amount="@(item.qty * item.Price)"
+                                           data-oos="@(isOOS ? "1" : "0")"
+                                           data-name="@item.ProdName"
+                                           onchange="vfRecalcCart()">
                                 </div>
                             </div>
                             <div class="cart-item-img">
                                 <a href="javascript:void(0);"><img src="@item.imagePath" alt="#"></a>
                             </div>
                             <div class="cart-item-info">
-                                <h6 class="cart-item-title">@item.ProdName</h6>
+                                <h6 class="cart-item-title">
+                                    @item.ProdName
+                                    @if (isOOS)
+                                    {
+                                        <span class="vf-oos-badge">Out of Stock</span>
+                                    }
+                                </h6>
                                 <p class="cart-item-meta">BV: @item.bv &nbsp;|&nbsp; PV: @item.PV</p>
                                 <a class="cart-item-remove" href="javascript:void(0);" onclick="DeleteCartDeatils(@item.id)"><i class="fa fa-trash-o"></i> Remove</a>
                             </div>
@@ -591,7 +646,7 @@
                             </div>
                             <div class="cart-item-total">
                                 <span class="label">Item Total</span>
-                                <span class="value">Rs. @(item.qty* item.Price)</span>
+                                <span class="value">Rs. @(item.qty * item.Price)</span>
                             </div>
                         </div>
                     }

@@ -25,6 +25,12 @@
 
 <script type="text/javascript">
 
+    // NEW: har product ke liye is session me ab tak add hui total qty track karta hai.
+    // Isse baar-baar "Add to Cart" dabane par cumulative qty stock se zyada nahi ja sakti.
+    // NOTE: Ye sirf client-side safeguard hai. Pakka fix server-side Addtocart action me
+    // hona chahiye: (cart me maujooda qty + nayi qty) <= available stock.
+    var cartAddedQty = {};
+
     function QTYChange(sqty, prodid) {
         var Qty = $("#input_" + prodid).val();
         if (Qty == "") { return false; }
@@ -53,6 +59,19 @@
             return false;
         }
 
+        // NEW: cart me pehle se add hui qty + nayi qty ko available stock se compare karo.
+        var alreadyAdded = parseInt(cartAddedQty[ProdId] || 0);
+        var requestedTotal = alreadyAdded + parseInt(Qty);
+        if (requestedTotal > parseInt(availqty)) {
+            var canAdd = parseInt(availqty) - alreadyAdded;
+            if (canAdd < 0) canAdd = 0;
+            var stockMsg = (canAdd === 0)
+                ? 'Stock limit reached. You already added the maximum available qty.'
+                : 'Only ' + canAdd + ' more can be added (stock limit).';
+            toastr.error(stockMsg, 'Error', { closeButton: true, progressBar: true, positionClass: 'toast-top-right', timeOut: 5000, extendedTimeOut: 1000 });
+            return false;
+        }
+
         var ProdName = $("#hndprod_" + ProdId).val();
         var imagePath = $("#hndimg_" + ProdId).val();
         var BatchNo = $("#hndbatch_" + ProdId).val();
@@ -69,6 +88,9 @@
             data: { ProdId: ProdId, ProdName: ProdName, imagePath: imagePath, Qty: Qty ,BatchNo,BatchNo},
             success: function (data) {
                 if (data.msg == "1") {
+                    // NEW: successful add ke baad session tracker update karo
+                    cartAddedQty[ProdId] = alreadyAdded + parseInt(Qty);
+
                     $("#spncartcount").text(data.total);
                     var str = ProdName + " added to cart";
                     toastr.success(str, 'Success', { closeButton: true, progressBar: true, positionClass: 'toast-top-right', timeOut: 5000, extendedTimeOut: 1000 });
