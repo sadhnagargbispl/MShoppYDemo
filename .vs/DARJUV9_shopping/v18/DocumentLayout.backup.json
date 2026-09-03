@@ -55,8 +55,7 @@
               "RelativeToolTip": "VitaFlow.Presenation\\Views\\Cart\\ViewCart.cshtml",
               "ViewState": "AgIAADwAAAAAAAAAAAAAAEwAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-10T07:22:55.304Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-10T07:22:55.304Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "VitaFlow.Presenation\\Views\\Product\\Productlist.cshtml",
               "ViewState": "AgIAALgCAAAAAAAAAAAUwOQCAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-10T07:09:00.761Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-10T07:09:00.761Z"
             },
             {
               "$type": "Document",
@@ -81,8 +79,7 @@
               "RelativeToolTip": "VitaFlow.Presenation\\Views\\Report\\PaymentSummary.cshtml",
               "ViewState": "AgIAAK0BAAAAAAAAAAAEwMMBAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-07-08T08:08:06.7Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-08T08:08:06.7Z"
             },
             {
               "$type": "Document",
@@ -94,8 +91,7 @@
               "RelativeToolTip": "VitaFlow.Presenation\\Controllers\\ReportController.cs",
               "ViewState": "AgIAABQBAAAAAAAAAAAEwC0BAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-08T08:05:11.669Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-08T08:05:11.669Z"
             }
           ]
         }
